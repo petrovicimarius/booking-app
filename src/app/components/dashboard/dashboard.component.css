@@ -1,0 +1,121 @@
+
+
+html{
+    background: #f2f2f2;
+    -webkit-background-size: 100% 100% cover;
+      -moz-background-size: 100% 100% cover;
+      -o-background-size: 100% 100% cover;
+      background-size: 100% 100% cover;
+      /* set the padding and margin to "0" */
+      margin: 0;
+      padding: 0;
+     /* set the position rules */
+    top: 0;
+    left: 0;
+}
+.companyList{
+    padding-top: 50px;
+    opacity:1;
+    background-color:#f2f2f2;
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:1000;
+}
+.createService{
+    margin: 0 auto;
+    max-width: 700px;
+    margin-bottom: 100px;
+}
+.create{
+    float: right;
+    border: none;
+    background: transparent;
+}
+.create i{
+    font-size: 90px;
+    color: #d966ff;
+}
+.company{
+    max-width: 700px;
+    margin: 0 auto;
+    height: 270px;
+    border-radius: 5px;
+    background-color: white;
+    outline: none;
+    border: 2px solid #ffe6ff;
+}
+.companyName{
+    /* border: 1px solid green; */
+    width: 600px;
+    /* padding-right: 30px; */
+    height: 50px;
+    padding-left: 25px;
+    font-size: 23px;
+}
+.companyName p{
+    font-weight: bold;
+    color: #d966ff;
+}
+.companyDesc{
+    /* border: 1px solid blue; */
+    margin-top: 10px;
+    padding-left: 25px;
+    height: 130px;
+    font-size: 17px;
+}
+.companyInfo{
+    /* border: 1px solid; */
+    margin-top: 15px;
+    height: 50px;
+    font-size: 20px;
+}
+.edit{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 20px;
+    margin-top: 15px;
+}
+.edit:hover{
+    color: lightgray;
+}
+.delete{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 20px;
+    margin-top: 13px;
+    margin-right: 15px;
+}
+.delete:hover{
+    color: lightgray;
+}
+.edit-delete{
+    display: flex;
+}
+.companyInfo{
+    display: flex;
+}
+.companyInfo p{
+    font-size: 15px;
+    color: grey;
+    margin: 0;
+    margin-top: 10px;
+}
+.availability{
+    width: 37%;
+    text-align: center;
+}
+.spaces{
+    width: 25%;
+    text-align: center;
+}
+.duration{
+    width: 23%;
+    text-align: center;
+}
+.price{
+    width: 22%;
+    text-align: center;
+}

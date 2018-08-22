@@ -1,0 +1,67 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+  crossorigin="anonymous"> -->
+
+<div id="navbar">
+  <a (click)="toggle()" class="menubtn">
+    <i class="fas fa-bars"></i>
+  </a>
+  <span class="imgP" style="margin-top: 40px;">
+    <a routerLink="/dashboard" class="navbar-brand">
+      Booking App
+    </a>
+
+  </span>
+  <div id="right">
+
+    <span class="menuOpt" [hidden]="currentRoute != '/users'">
+      <ul class="pages">
+        <a routerLink="/dashboard">
+          <li [ngClass]="{'active': currentRoute=='/dashboard'}">Dashboard</li>
+        </a>
+        <a routerLink="/offices">
+          <li [ngClass]="{'active': currentRoute=='/offices'}">Offices</li>
+        </a>
+        <a routerLink="/bookings">
+          <li [ngClass]="{'active': currentRoute=='/bookings'}">Bookings</li>
+        </a>
+        <a routerLink="/profile">
+          <li [ngClass]="{'active': currentRoute=='/profile'}">Profile</li>
+        </a>
+      </ul>
+    </span>
+
+    <span class="menuOpt" [hidden]="currentRoute == '/users'">
+      <ul class="pages">
+        <a routerLink="/dashboard">
+          <li [ngClass]="{'active': currentRoute=='/dashboard'}">Dashboard</li>
+        </a>
+        <a routerLink="/offices">
+          <li [ngClass]="{'active': currentRoute=='/offices'}">Offices</li>
+        </a>
+        <a routerLink="/bookings">
+          <li [ngClass]="{'active': currentRoute=='/bookings'}">Bookings</li>
+        </a>
+        <a routerLink="/profile">
+          <li [ngClass]="{'active': currentRoute=='/profile'}">Profile</li>
+        </a>
+
+        <!-- <a routerLink="/login">
+            <li [ngClass]="{'active': currentRoute=='/profile'}">Sign Up</li>
+          </a> -->
+      </ul>
+    </span>
+
+    <!-- <ul class="profile">
+        <li>
+          <a routerLink="/account">
+            <img src="./assets/default.jpg" class="profilePic">
+          </a>
+        </li> -->
+    <!-- <li><a routerLink="/account" class="username" style="font-size:12px;" [(ngModel)]="user.name">{{user.name}}</a><span class="points">1234</span></li> -->
+    <!-- <li style="display: grid;">
+          <a routerLink="/account" class="username" style="font-size:12px;">{{wholeName}}</a>
+          <span class="points">1234</span>
+        </li>
+      </ul> -->
+  </div>
+</div>
