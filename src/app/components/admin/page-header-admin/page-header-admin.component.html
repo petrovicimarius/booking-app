@@ -1,0 +1,42 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+  crossorigin="anonymous"> -->
+
+<div id="navbar">
+  <a (click)="toggle()" class="menubtn">
+    <i class="fa fa-bars" style="font-size: 30px"></i>
+  </a>
+  <span class="imgP" style="margin-top: 40px;">
+    <a [routerLink]="['/offices']" class="navbar-brand">
+      Booking App
+    </a>
+
+  </span>
+  <div id="right">
+
+    <span class="menuOpt" [hidden]="currentRoute != '/users'">
+      <ul class="pages">
+        <a [routerLink]="['/offices']" routerLinkActive="isActive">Offices
+        </a>
+        <a [routerLink]="['/services']" routerLinkActive="isActive">Services
+        </a>
+        <a [routerLink]="['/bookings']" routerLinkActive="isActive">Bookings
+        </a>
+        <a [routerLink]="['/profile']" routerLinkActive="isActive">Profile
+        </a>
+      </ul>
+    </span>
+
+    <span class="menuOpt" [hidden]="currentRoute == '/users'">
+      <ul class="pages">
+        <a [routerLink]="['/offices']" routerLinkActive="isActive">Offices
+        </a>
+        <a [routerLink]="['/services']" routerLinkActive="isActive">Services
+        </a>
+        <a [routerLink]="['/bookings']" routerLinkActive="isActive">Bookings
+        </a>
+        <a [routerLink]="['/profile']" routerLinkActive="isActive">Profile
+        </a>
+      </ul>
+    </span>
+  </div>
+</div>

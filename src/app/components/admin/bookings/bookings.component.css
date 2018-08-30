@@ -1,0 +1,65 @@
+tr {
+  /* border: 1px solid orange; */
+}
+th,
+td {
+  /* border: 1px solid orange; */
+
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 50px;
+  font-size: 17px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.bookingsList {
+  /* border: 1px solid red; */
+}
+tr:nth-child(4n + 1) {
+  background-color: white;
+}
+tr:nth-child(4n + 2) {
+  background-color: #f8edf8;
+}
+tr:nth-child(4n + 3) {
+  background-color: white;
+}
+tr:nth-child(4n + 4) {
+  background-color: #ebf2f9;
+}
+body {
+  margin: 0;
+  background-color: white;
+}
+.sort {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.select {
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  border: 1px solid #ffe6ff;
+  height: 50px;
+  width: 30%;
+  font-size: 20px;
+}
+.button {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: grey;
+  font-size: 20px;
+}
+.button:hover {
+  color: #d966ff;
+}
+input {
+  max-width: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

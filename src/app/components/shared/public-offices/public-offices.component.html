@@ -1,0 +1,44 @@
+<app-page-header>
+</app-page-header>
+<div>
+  <div class="company">
+    <div class="logo">
+      <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+    </div>
+    <div class="companyInfo">
+      <div class="companyName">
+        <p>{{company.name}}</p>
+      </div>
+      <div class="companyDesc">
+        <p>{{company.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="officeList" *ngFor="let office of officesList">
+    <div class="office">
+      <div class="officeName">
+        <p>{{office.name}}</p>
+      </div>
+      <div class="officeDesc">
+        <p>{{office.description}}</p>
+      </div>
+      <div class="officeInfo">
+        <div class="address">
+          <span>{{office.address}}</span>
+          <p>Adress</p>
+        </div>
+        <div class="email">
+          <span>{{office.email}}</span>
+          <p>Email</p>
+        </div>
+        <div class="phone">
+          <span>{{office.phone}}</span>
+          <p>Phone</p>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="selectOffice" (click)="goToServices(office)">SELECT</button>
+      </div>
+    </div>
+  </div>
+</div>

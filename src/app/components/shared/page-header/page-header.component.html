@@ -6,7 +6,7 @@
     <i class="fas fa-bars"></i>
   </a>
   <span class="imgP" style="margin-top: 40px;">
-    <a routerLink="/dashboard" class="navbar-brand">
+    <a routerLink="/companies" class="navbar-brand">
       Booking App
     </a>
 
@@ -26,11 +26,9 @@
 
     <span class="menuOpt" [hidden]="currentRoute == '/users'">
       <ul class="pages">
-        <a routerLink="/companies">
-          <li [ngClass]="{'active': currentRoute=='/companies'}">Companies</li>
+        <a [routerLink]="['/companies']" routerLinkActive="isActive">Companies
         </a>
-        <a routerLink="/login">
-          <li [ngClass]="{'active': currentRoute=='/login'}">Log In</li>
+        <a [routerLink]="['/login']" routerLinkActive="isActive"> Log In
         </a>
       </ul>
     </span>

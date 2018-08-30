@@ -7,8 +7,8 @@
       <img class="banner" src="./assets/booking.png">
       <form (ngSubmit)="loginUser()" #login="ngForm">
         <div class="signIn">
-          <!-- <span class="help-block" style="color: white"> {{message}}</span>
-          <span class="error_message_pass" style="color: white">{{ password_message }}</span> -->
+          <span class="help-block" style="color: black"> {{message}}</span>
+          <span class="error_message_pass" style="color: black">{{ password_message }}</span>
           <p class="inputInfo">Email adress</p>
           <div>
             <input type="email" name="email_log" id="email_log" class="email" [(ngModel)]="company.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -21,8 +21,7 @@
           <p class="inputInfo">Password</p>
           <div class="display_eye">
             <input type="{{showHide ? 'password' : 'text'}}" name="password_log" id="password_log" class="password" [(ngModel)]="company.password"
-              required #passwordlogin="ngModel">
-            <!-- pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$" -->
+              required pattern=".{4,}" #passwordlogin="ngModel">
             <button type="button" (mousedown)="showMyPass()" class="showPassword">
               <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
             </button>
@@ -60,7 +59,6 @@
         <img class="banner" src="./assets/booking.png">
         <form (ngSubmit)="resetPassword()" #reset="ngForm">
           <div class="col-md-7">
-            <span class="error_message" style="color: white">{{ password_message }}</span> -->
             <p class="inputInfo">Email adress</p>
             <div>
               <input type="email" name="email_reset" id="email_reset" class="email" [(ngModel)]="resetUser.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -69,29 +67,6 @@
             <div class="error_email">
               <span class="error_message" *ngIf="!email_reset.valid && email_reset.touched ">Please enter a valid email format!</span>
             </div>
-            <!-- <p class="inputInfo">Password</p>
-            <div class="display_eye">
-              <input type="{{showHide ? 'password' : 'text'}}" name="new_password" id="new_password" class="password" [(ngModel)]="resetUser.password"
-                required #new_pass="ngModel" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
-
-              <button type="button" (click)="showMyPass()" class="showPassword">
-                <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
-              </button>
-              <span class="error_message" *ngIf="!new_pass.valid && new_pass.touched" style="color: white">Please enter at
-                least one: upper-case leter, number, special caracters and minlength 8.</span>
-            </div>
-            <p class="inputInfo">Confirm password</p>
-            <div class="display_eye">
-              <input type="{{showConfirmPassword ? 'password' : 'text'}}" name="confirm_password" id="confirm_password" class="password"
-                [(ngModel)]="confirm_password" required #confirm_pass="ngModel" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
-              <button type="button" (click)="showMyConfirmPass()" class="showConfirmPassword">
-                <i class="fa {{ showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
-              </button>
-              <span class="error_message" *ngIf="!confirm_pass.valid &&  confirm_pass.touched " style="color: black">Please
-                enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
-
-            </div> -->
-
             <div class="resetBtn">
               <button type="submit" class="sign-btn" [disabled]="!reset.valid">RESET PASSWORD</button>
             </div>
@@ -120,10 +95,10 @@
         <img class="banner" src="./assets/booking.png">
         <form (ngSubmit)="registerUser()" #create="ngForm">
           <div class="col-md-7">
-            <!-- <span class="help-block" style="color: white"> {{message}}</span> -->
+            <span class="help-block" style="color: black"> {{message}}</span>
             <p class="inputInfo">Your name</p>
             <div>
-              <input type="text" name="first_name" id="first_name" class="email" [(ngModel)]="myUserData.firstName" required #first_name="ngModel"
+              <input type="text" name="first_name" id="first_name" class="email" [(ngModel)]="company.name" required #first_name="ngModel"
                 pattern="[a-zA-Z ]*">
             </div>
             <div class="error_email">
@@ -132,7 +107,7 @@
             </div>
             <p class="inputInfo">Email adress</p>
             <div>
-              <input type="email" name="email_register" id="email_register" class="email" [(ngModel)]="myUserData.email" required #email_register="ngModel"
+              <input type="email" name="email_register" id="email_register" class="email" [(ngModel)]="company.email" required #email_register="ngModel"
                 email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
 
             </div>
@@ -142,8 +117,8 @@
             </div>
             <p class="inputInfo">Password</p>
             <div class="display_eye">
-              <input type="{{showHide ? 'password' : 'text'}}" name="password_register" id="password_register" class="password" [(ngModel)]="myUserData.password"
-                required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$" #password_register="ngModel">
+              <input type="{{showHide ? 'password' : 'text'}}" name="password_register" id="password_register" class="password" [(ngModel)]="company.password"
+                required pattern=".{4,}" #password_register="ngModel">
               <button type="button" (click)="showMyPass()" class="showPassword">
                 <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
               </button>
@@ -173,41 +148,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="wrapper">
-  <div class="login">
-    <form (ngSumbit)="loginUser()">
-      <div class="bannerLogin">
-        <img src="./assets/booking.png">
-      </div>
-      <div class="containerEmail">
-        <p>
-          Email adress
-        </p>
-        <input type="email" class="emailLogin" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-        <span class="error_message" *ngIf="!email.valid && email.touched ">Please enter a valid email format!</span>
-      </div>
-      <div class="containerPass">
-        <p>
-          Password
-        </p>
-        <input type="password" class="passwordLogin">
-      </div>
-      <button type="submit" class="logIn"><span>LOGIN</span></button>
-      <div class="forgetPass">
-        <p>Forgot your password?<a (click)="manageForms(false, false, true)">Reset it</a></p>
-      </div>
-
-    </form>
-  </div>
-
-  <div class="reset" *ngIf="resetContent">
-
-  </div>
-
-  <div class="signUp">
-
-  </div>
-
-
-</div> -->

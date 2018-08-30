@@ -1,0 +1,136 @@
+<app-page-header>
+</app-page-header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+  <div class="officeHead">
+    <div class="office">
+      <div class="officeName">
+        <p>{{office.name}}</p>
+      </div>
+      <div class="officeDesc">
+        <p>{{office.description}}</p>
+      </div>
+      <div class="officeInfo">
+        <div class="officeAddress">
+          <span>{{office.address}}</span>
+          <p>Adress</p>
+        </div>
+        <div class="officeEmail">
+          <span>{{office.email}}</span>
+          <p>Email</p>
+        </div>
+        <div class="officePhone">
+          <span>{{office.phone}}</span>
+          <p>Phone</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="serviceList" *ngFor="let service of servicesList">
+    <div class="service">
+      <div class="serviceName">
+        <p>{{service.name}}</p>
+      </div>
+      <div class="serviceDesc">
+        <p>{{service.description}}</p>
+      </div>
+      <div class="serviceInfo">
+        <div class="spaces">
+          <span>{{service.spaces}}</span>
+          <p>Spaces</p>
+        </div>
+        <div class="duration">
+          <span>{{service.duration}}</span>
+          <p>Duration</p>
+        </div>
+        <div class="price">
+          <span>{{service.price}}</span>
+          <p>Price</p>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="bookNow" (click)="toggleBook(service)">BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" *ngIf="bookEnabled">
+    <form class="booking" (ngSubmit)="addBooking()" #bookingForm="ngForm">
+      <div style="float:right;">
+        <button type="button" class="close" (click)="toggleUndo()">x</button>
+      </div>
+      <div class="header">
+        <h1>Make your booking</h1>
+        <p>PERSONAL DETAILS</p>
+      </div>
+      <div class="formular">
+        <div class="firstDiv">
+          <p>First name</p>
+          <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required #first_name="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a valid
+              first name format!
+            </i>
+          </div>
+          <p>Phone</p>
+          <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required #phone="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
+            </i>
+          </div>
+          <p>Address</p>
+          <input type="text" class="address" name="address" [(ngModel)]="booking.address" required #address="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid address
+              format!
+            </i>
+          </div>
+        </div>
+        <div class="secondDiv">
+          <p>Last name</p>
+          <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required #last_name="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a valid last
+              name format!
+            </i>
+          </div>
+          <p>Email</p>
+          <input type="text" class="email" name="email" [(ngModel)]="booking.email" required #email="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
+            </i>
+          </div>
+          <p>Date</p>
+          <input class="date" type="date" name="date" [min]="today" [(ngModel)]="booking.time" required #date="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! date.valid && date.touched"> Please choose the date!
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="next_button">
+        <button type="submit" class="next" [disabled]="!bookingForm.valid">SEND BOOKING</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal" *ngIf="sendEnabled">
+    <div class="sendBooking">
+      <div style="float:right;">
+        <button type="button" class="close" (click)="toggleUndo()">x</button>
+      </div>
+      <div class="img">
+        <img src="./assets/sendBooking.png">
+      </div>
+      <div class="requestSend">
+        <p>Your request was sent!</p>
+      </div>
+      <div class="confirmation">
+        <p>In a couple of seconds a confirmation email will be sent to your email address with all the details for your reservation.
+          Thank you for using our services!</p>
+      </div>
+      <div class="buttonSize">
+        <button type="button" class="closeButton" (click)="toggleUndo()">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>

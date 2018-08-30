@@ -1,0 +1,208 @@
+<app-page-header-admin>
+</app-page-header-admin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="serviceList">
+    <div class="createService">
+        <button class="create">
+            <i class="fa fa-plus-circle" (click)="toggleAdd()"></i>
+        </button>
+    </div>
+    <div class="rectangle" *ngFor="let service of serviceList">
+        <!-- service -->
+        <div class="service">
+            <div class="edit-delete">
+                <div class="serviceName">
+                    <p>{{service.name}}</p>
+                </div>
+
+                <button class="edit">
+                    <i class="fa fa-edit" style="font-size:30px;" (click)="toggleEdit(service)"></i>
+                </button>
+                <button class="delete">
+                    <i class="fa fa-trash-o" style="font-size:30px;" (click)="deleteService(service)"></i>
+
+                </button>
+            </div>
+            <div class="serviceDesc">
+                <p>{{service.description}}</p>
+            </div>
+            <div class="office">
+                <p>{{service.office_id.name}}</p>
+            </div>
+            <div class="serviceInfo">
+                <div class="spaces">
+                    <span>{{service.spaces}}</span>
+                    <p>Spaces</p>
+                </div>
+                <div class="duration">
+                    <span>{{service.duration}} hour(s)</span>
+                    <p>Duration</p>
+                </div>
+                <div class="price">
+                    <span>{{service.price}} Lei</span>
+                    <p>Price</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edited service -->
+    <div class="modal" *ngIf="editEnabled">
+        <form class="serviceEdit" (ngSubmit)="updateService(serviceData)" #edit="ngForm">
+            <div class="edit-delete">
+                <div class="addNewService">
+                    <p>Edit service</p>
+                </div>
+                <button type="submit" class="createButton" [disabled]="!edit.valid">
+                    <i class="fa fa-save" style="font-size:100px;"></i>
+                </button>
+                <button class="deleteButton">
+                    <i class="fa fa-times-circle" style="font-size:100px;" (click)="toggleUndo()"></i>
+                </button>
+            </div>
+            <p class="editInfo">SERVICE DETAILS</p>
+            <div style="display: flex;">
+                <div class="firstDiv">
+                    <div class="createNewName">
+                        <p>Service name</p>
+                        <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required #newName="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter
+                                a valid name format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewDesc">
+                        <p>Service description</p>
+                        <textarea rows="9" maxlength="100" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description" required
+                            #textarea="ngModel"></textarea>
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter
+                                a valid description format!
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div class="secondDiv">
+                    <div class="createNewName">
+                        <p>Spaces</p>
+                        <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required #spaces="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! spaces.valid && spaces.touched"> Please enter
+                                a valid spaces format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewName">
+                        <p>Duration(hour)</p>
+                        <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required #duration="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! duration.valid && duration.touched"> Please enter
+                                a valid duration format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewName">
+                        <p>Price(LEI)</p>
+                        <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required #price="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! price.valid && price.touched"> Please enter a
+                                valid price format!
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="companyOffice">
+                <p>Select office</p>
+                <select class="selectOffice" name="select" [(ngModel)]="serviceData.office_id._id" (click)="getOfficeId(serviceData)" required
+                    #select="ngModel">
+                    <option *ngFor="let office of officesList" class="" [value]="office._id">{{office.name}}</option>
+                </select>
+                <div class="error_message">
+                    <i class="fa fa-exclamation-triangle" *ngIf="! select.valid && select.touched"> Please choose the office!
+                    </i>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- create service -->
+    <div class="modal" *ngIf="createEnabled">
+        <form class="serviceEdit" (ngSubmit)="addService(serviceData)" #create="ngForm">
+            <div class="edit-delete">
+                <div class="addNewService">
+                    <p>Edit service</p>
+                </div>
+                <button type="submit" class="createButton" [disabled]="!create.valid">
+                    <i class="fa fa-plus-circle" style="font-size:100px;"></i>
+                </button>
+                <button class="deleteButton">
+                    <i class="fa fa-times-circle" style="font-size:100px;" (click)="toggleUndo()"></i>
+                </button>
+            </div>
+            <p class="editInfo">SERVICE DETAILS</p>
+            <div style="display: flex;">
+                <div class="firstDiv">
+                    <div class="createNewName">
+                        <p>Service name</p>
+                        <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required #newName="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter
+                                a valid name format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewDesc">
+                        <p>Service description</p>
+                        <textarea rows="9" maxlength="100" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description" required
+                            #textarea="ngModel"></textarea>
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter
+                                a valid description format!
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div class="secondDiv">
+                    <div class="createNewName">
+                        <p>Spaces</p>
+                        <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required #spaces="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! spaces.valid && spaces.touched"> Please enter
+                                a valid spaces format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewName">
+                        <p>Duration(hour)</p>
+                        <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required #duration="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! duration.valid && duration.touched"> Please enter
+                                a valid duration format!
+                            </i>
+                        </div>
+                    </div>
+                    <div class="createNewName">
+                        <p>Price(LEI)</p>
+                        <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required #price="ngModel">
+                        <div class="error_message">
+                            <i class="fa fa-exclamation-triangle" *ngIf="! price.valid && price.touched"> Please enter a
+                                valid price format!
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="companyOffice">
+                <p>Select office</p>
+                <select class="selectOffice" name="select" [(ngModel)]="serviceData.office_id" required #select="ngModel">
+                    <option *ngFor="let office of officesList" class="" [value]="office._id">{{office.name}}</option>
+                </select>
+                <div class="error_message">
+                    <i class="fa fa-exclamation-triangle" *ngIf="! select.valid && select.touched"> Please choose the office!
+                    </i>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

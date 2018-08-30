@@ -1,14 +1,14 @@
-export class Company {
+export class Office {
     name: String;
     description: String;
-    image_url: String;
     email: String;
     phone: String;
-    address: String;
-    password: String;
-    resetPasswordToken: String;
-    is_admin: Boolean;
+    address: string;
+    company_id: string;
+    service_id: string;
+    office_id: string;
     create_at: Date;
     updated_at: Date;
+
     constructor() { }
 }

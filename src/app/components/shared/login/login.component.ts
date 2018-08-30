@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../../../shared/user';
 import { Company } from '../companies/company';
 
 import { ApiConnectionService } from '../../../connection-services/api-connection/api-connection.service';
@@ -17,14 +16,13 @@ export class LoginComponent implements OnInit {
   @ViewChild('create') createForm: NgForm;
 
   public showHide = true;
-  public showConfirmPassword = true;
-  public myUserData: User = new User();
+
+
   public company: Company = new Company();
 
-  public resetUser: User = new User();
   public message: String;
   public password_message = '';
-  public confirm_password = '';
+
 
   constructor(
     private dataService: ApiConnectionService,
@@ -42,9 +40,7 @@ export class LoginComponent implements OnInit {
   showMyPass() {
     this.showHide = !(this.showHide);
   }
-  showMyConfirmPass() {
-    this.showConfirmPassword = !(this.showConfirmPassword);
-  }
+
   onReset() {
     this.resetPassword();
   }
@@ -55,10 +51,27 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser() {
+    console.log('company ', this.company);
+
     this.dataService
-      .registerUser(this.myUserData)
-      .subscribe(res => this.manageForms(true, false, false));
+      .registerUser(this.company)
+      // .subscribe(res => this.manageForms(true, false, false));
+      .subscribe((res: any) => {
+        console.log('res', res);
+        //window.location.reload();
+        this.manageForms(true, false, false);
+      }, (err) => {
+        console.log(err);
+      });
   }
+
+  getCompanyProfile(): void {
+    this.dataService.getProfile().subscribe((res: any) => {
+      console.log('res ', res.company._id);
+      localStorage.setItem('id', res.company._id);
+    });
+  }
+
   loginUser() {
     console.log('company ', this.company);
 
@@ -66,16 +79,27 @@ export class LoginComponent implements OnInit {
       .loginUser(this.company)
       .subscribe((res: any) => {
         console.log('res ', res);
+
+        const token = res.token;
+        console.log('token', token);
         const success_message = res.auth.toString();
+        console.log('tip', typeof success_message);
         if (success_message === 'false') {
-          this.password_message = 'Your email or password is invalid, try again!';
+          this.password_message = 'Your email or password is invalid, try again!'
           this.router.navigate(['/login']);
+          console.log('false');
+
+
         }
         else {
+          localStorage.setItem('token', token);
           localStorage.setItem('email', this.company.email.toString());
           localStorage.setItem('success_message', success_message);
-          this.router.navigate(['/dashboard']);
-          window.location.reload();
+          this.getCompanyProfile();
+          console.log('true');
+
+          this.router.navigate(['/offices']);
+          //window.location.reload();
           this.password_message = '';
         }
 
@@ -86,50 +110,11 @@ export class LoginComponent implements OnInit {
 
   // reset password
   resetPassword(): void {
-    if (this.resetUser.password != this.confirm_password) {
-      this.password_message = 'Password not match';
-    }
-    else {
-      this.dataService
-        .resetPassword(this.resetUser)
-        .subscribe(res => {
-          console.log('password updated ', res);
-          this.manageForms(true, false, false)
-        });
-    }
-
+    this.dataService
+      .resetPassword(this.company)
+      .subscribe(res => {
+        this.manageForms(true, false, false)
+      });
   }
-  getUserByEmail() {
 
-  }
 }
-
-
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-
-//   constructor() { }
-
-//   loginUser() {
-
-//   }
-//   public loginContent = true;
-//   public resetContent = false;
-//   public registerContent = false;
-
-//   manageForms(login: boolean, register: boolean, reset: boolean): void {
-//     this.loginContent = login;
-//     this.registerContent = register;
-//     this.resetContent = reset;
-//   }
-
-//   ngOnInit() {
-//   }
-
-// }

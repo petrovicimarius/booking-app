@@ -1,0 +1,35 @@
+<app-page-header-admin>
+</app-page-header-admin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div style="padding-top: 100px;">
+  <table class="table">
+    <tr class="head">
+      <th>Name<button type="button" class="button" (click)="toggleSort('name')"><i class="fa fa-arrow-down"></i></button></th>
+      <th>Email<button type="button" class="button" (click)="toggleSort('email')"><i class="fa fa-arrow-down"></i></button></th>
+      <th>Phone<button type="button" class="button" (click)="toggleSort('phone')"><i class="fa fa-arrow-down"></i></button></th>
+      <th>Availability<button type="button" class="button" (click)="toggleSort('time')"><i class="fa fa-arrow-down"></i></button></th>
+    </tr>
+    <!-- FilterArrayByProperty:'first_name': componentInput | -->
+    <tr>
+      <th>
+        <input type="text" [(ngModel)]="a" placeholder="First name" (keyup)="toggleFilter('first_name')">
+        <input type="text" [(ngModel)]="b" placeholder="Last name" (keyup)="toggleFilter('last_name')">
+      </th>
+      <th>
+        <input type="text" [(ngModel)]="c" placeholder="Email" (keyup)="toggleFilter('email')">
+      </th>
+      <th>
+        <input type="text" [(ngModel)]="d" placeholder="Phone" (keyup)="toggleFilter('phone')">
+      </th>
+      <th>
+        <input type="text" [(ngModel)]="e" placeholder="Availability" (keyup)="toggleFilter('time')">
+      </th>
+    </tr>
+    <tr class="booking" *ngFor="let booking of bookingsList | FilterArrayByProperty:filterBy: componentInput | sort:sortBy">
+      <td>{{ booking.first_name }} {{booking.last_name}}</td>
+      <td>{{booking.email}}</td>
+      <td>{{booking.phone}}</td>
+      <td>{{booking.time}}</td>
+    </tr>
+  </table>
+</div>
