@@ -2,28 +2,26 @@
   crossorigin="anonymous"> -->
 
 <div id="navbar">
-  <a (click)="toggle()" class="menubtn">
-    <i class="fas fa-bars"></i>
-  </a>
+  <div class="dropdown">
+    <button class="dropdownButton"><i class="fa fa-bars" style="font-size: 30px"></i></button>
+    <div class="dropdown-content">
+      <div class="content">
+        <a [routerLink]="['/companies']" routerLinkActive="isActive">Companies
+        </a>
+      </div>
+      <div class="content">
+        <a [routerLink]="['/login']" routerLinkActive="isActive"> Log In
+        </a>
+      </div>
+    </div>
+  </div>
   <span class="imgP" style="margin-top: 40px;">
-    <a routerLink="/companies" class="navbar-brand">
+    <a [routerLink]="['/companies']" class="navbar-brand">
       Booking App
     </a>
 
   </span>
   <div id="right">
-
-    <span class="menuOpt" [hidden]="currentRoute != '/users'">
-      <ul class="pages">
-        <a routerLink="/companies">
-          <li [ngClass]="{'active': currentRoute=='/companies'}">Companies</li>
-        </a>
-        <a routerLink="/login">
-          <li [ngClass]="{'active': currentRoute=='/login'}">Log In</li>
-        </a>
-      </ul>
-    </span>
-
     <span class="menuOpt" [hidden]="currentRoute == '/users'">
       <ul class="pages">
         <a [routerLink]="['/companies']" routerLinkActive="isActive">Companies

@@ -1,231 +1,230 @@
-.wrapper{
-    
+.wrapper {
   height: 987px;
   width: 100%;
   background: white;
-  }
-  .content{
-    padding-top: 100px;
-  }
-  .banner{
-      display: flex;
-      margin: 0 auto;
-      margin-bottom: 50px;
-  }
-  .inputInfo{
-      width: 350px;
-      display: flex;
-      margin: 0 auto;
-      height: 30px;
-      font-size: 20px;
-      margin-top: 20px;
-  }
-  .display_eye{
-    display: flex;
-    margin: 0 auto;
-    max-width: 350px;
-  }
-  .error_message{
-    color: black;
-    display: flex;
-    margin: 0 auto;
-    max-width: 350px;
-    padding-top: 7px;
-    text-align: center;
-  }
-  .error_email{
-    width: 350px;
-    text-align: center;
-    display: flex;
-    margin: 0 auto;
-  }
-  .error_message_pass{
-    color: black;
-    display: flex;
-    margin: 0 auto;
-    max-width: 350px;
-    padding-top: 7px;
-    text-align: center;
-  }
-  .display_terms{
-    display: inline;
-    padding: 27px;
-    display: flex;
-    margin: 0 auto;
-    max-width: 350px;
-  }
-  .sign-btn{
-    margin-top: 33px;
-    height: 50px;
-    width: 350px;
-    border-radius: 5px;	
-    background-color: #d966ff;
-    color: #F7F7F7;	
-    font-size: 18px;	
-    font-weight: bold;	
-    line-height: 24px;	
-    text-align: center;
-    margin: 0 auto;
-  }
-  .resetBtn{
-    margin-top: 30px;
-    display: flex;
-  }
-  .containerSignIn{
-      margin-top: 30px;
-      height: 50px;
-      display: flex;
 }
-.createAccount{
-    margin-top: 30px;
-      height: 50px;
-      display: flex;
+.content {
+  padding-top: 100px;
 }
-.containerSignIn span{
-    display: block;
-    text-align: center;
+.banner {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
-  .sign-up{
-    border-radius: 5px;	
-    background-color: #d966ff;
-    color: #F7F7F7;	
-    font-size: 18px;	
-    font-weight: bold;	
-    line-height: 11px;	
-    text-align: center;
-    width: 85px;
-    height: 50px;
-  }
-  .signUp{
-      display: flex;
-      margin: 0 auto;
-  }
-  .text-account{
-    font-size: 18px;
-    color: black;
-    padding-left: 10px;
-    padding-right: 9px;
-  }
-  .space-between{
-    margin-top: 5px;
-  }
-  .email{
-    height: 50px;
-    border: 1px solid #AEB5BB;	
-    border-radius: 5px;	
-    background-color: #FFFFFF;
-    display: flex;
-    margin: 0 auto;
-    width: 330px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 18px;
-  }
-  .password{
-    height:50px;
-    border: 1px solid #AEB5BB;	
-    border-radius: 5px;	
-    background-color: #FFFFFF;
-    display: flex;
-    width: 330px;
-    padding-left: 10px;
-    padding-right: 40px;
-    position: relative;
-    font-size: 18px;
-  }
-  .title{
-    font-size: 20px;	
-    line-height: 26px;	
-    text-align: center;
-    color: gray;
-  }
-  .subtitle{
-    font-size: 36px;
-    line-height: 30px;	
-    text-align: center;
-    color: #FFF;
-  }
-  .forgot{
-    padding-left: 65px;
-    font-size: 14px;
-    line-height: 50px;
-    color: black;
-    width: 350px;
-    display: flex;
-    margin: 0 auto;
-    height: 30px;
-    font-size: 20px;
-    margin-top: 20px;
-  }
-  .to-sign-up{
-    margin: 0 auto;
-    display: flex;
-    padding-top: 100px;
-  }
-  .toLogin{
-    margin: 0 auto;
-    display: flex;
-    max-width: 350px;;
-  }
-  a{
-    color: black;
-    text-decoration: underline;
-    margin-left: 15px;
-  }
-  a:hover{
-    cursor: pointer;
-  }
-  ::placeholder { 
-    color: #AEB5BB;;
-    font-size: 18px;
-    padding-left: 10px;
-  }
-  input.ng-invalid.ng-touched{
-    border: 1px solid red;
-  }
-  .terms{
-    color: black;
-    font-size: 15px;
-    margin-top: 7px;
-  }
-  .agree{
-    width: 65px;
-    margin-left: 25px;
-  }
-  #agree{
-    height: 19px;
-    cursor: pointer;
-  }
-  #agree_terms{
-    height: 19px;
-    cursor: pointer;
-  }
-  #agree:hover{
-    cursor: pointer;
-  }
-  #agree_terms:hover{
-    cursor: pointer;
-  }
-  
-  .showPassword{
-    background: transparent;
-    border: 0px;
-    outline: 0px;
-    position: absolute;
-    margin-left: 310px;
-    margin-top: 17px;
-    font-size: 18px;
-    }
-  .showConfirmPassword{
-    background: transparent;
-    border: 0px;
-    outline: 0px;
-    margin-left: 310px;
-    margin-top: 17px;
-    font-size: 18px;
-    position: absolute;
-    }
-  
-  .style-eye{
-    color: #AEB5BB;
-  }
+.inputInfo {
+  width: 350px;
+  display: flex;
+  margin: 0 auto;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.display_eye {
+  display: flex;
+  margin: 0 auto;
+  max-width: 350px;
+}
+.error_message {
+  color: red;
+  display: flex;
+  margin: 0 auto;
+  max-width: 350px;
+  padding-top: 7px;
+  text-align: center;
+}
+.error_email {
+  width: 350px;
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+}
+.error_message_pass {
+  color: red;
+  display: flex;
+  margin: 0 auto;
+  max-width: 350px;
+  padding-top: 7px;
+  text-align: center;
+}
+.display_terms {
+  display: inline;
+  padding: 27px;
+  display: flex;
+  margin: 0 auto;
+  max-width: 350px;
+}
+.sign-btn {
+  margin-top: 33px;
+  height: 50px;
+  width: 350px;
+  border-radius: 5px;
+  background-color: #d966ff;
+  color: #f7f7f7;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  margin: 0 auto;
+}
+.resetBtn {
+  margin-top: 30px;
+  display: flex;
+}
+.containerSignIn {
+  margin-top: 30px;
+  height: 50px;
+  display: flex;
+}
+.createAccount {
+  margin-top: 30px;
+  height: 50px;
+  display: flex;
+}
+.containerSignIn span {
+  display: block;
+  text-align: center;
+}
+.sign-up {
+  border-radius: 5px;
+  background-color: #d966ff;
+  color: #f7f7f7;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 11px;
+  text-align: center;
+  width: 85px;
+  height: 50px;
+}
+.signUp {
+  display: flex;
+  margin: 0 auto;
+}
+.text-account {
+  font-size: 18px;
+  color: black;
+  padding-left: 10px;
+  padding-right: 9px;
+}
+.space-between {
+  margin-top: 5px;
+}
+.email {
+  height: 50px;
+  border: 1px solid #aeb5bb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  margin: 0 auto;
+  width: 330px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+}
+.password {
+  height: 50px;
+  border: 1px solid #aeb5bb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  width: 330px;
+  padding-left: 10px;
+  padding-right: 40px;
+  position: relative;
+  font-size: 18px;
+}
+.title {
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: gray;
+}
+.subtitle {
+  font-size: 36px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+}
+.forgot {
+  padding-left: 65px;
+  font-size: 14px;
+  line-height: 50px;
+  color: black;
+  width: 350px;
+  display: flex;
+  margin: 0 auto;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.to-sign-up {
+  margin: 0 auto;
+  display: flex;
+  padding-top: 100px;
+}
+.toLogin {
+  margin: 0 auto;
+  display: flex;
+  max-width: 350px;
+}
+a {
+  color: black;
+  text-decoration: underline;
+  margin-left: 15px;
+}
+a:hover {
+  cursor: pointer;
+}
+::placeholder {
+  color: #aeb5bb;
+  font-size: 18px;
+  padding-left: 10px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.terms {
+  color: black;
+  font-size: 15px;
+  margin-top: 7px;
+}
+.agree {
+  width: 65px;
+  margin-left: 25px;
+}
+#agree {
+  height: 19px;
+  cursor: pointer;
+}
+#agree_terms {
+  height: 19px;
+  cursor: pointer;
+}
+#agree:hover {
+  cursor: pointer;
+}
+#agree_terms:hover {
+  cursor: pointer;
+}
+
+.showPassword {
+  background: transparent;
+  border: 0px;
+  outline: 0px;
+  position: absolute;
+  margin-left: 310px;
+  margin-top: 17px;
+  font-size: 18px;
+}
+.showConfirmPassword {
+  background: transparent;
+  border: 0px;
+  outline: 0px;
+  margin-left: 310px;
+  margin-top: 17px;
+  font-size: 18px;
+  position: absolute;
+}
+
+.style-eye {
+  color: #aeb5bb;
+}

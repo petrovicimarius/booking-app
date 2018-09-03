@@ -1,39 +1,37 @@
-import { Component, OnInit, ViewChild, Output } from '@angular/core';
-import { Router, Route, RoutesRecognized, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild, Output } from "@angular/core";
+import {
+  Router,
+  Route,
+  RoutesRecognized,
+  ActivatedRoute
+} from "@angular/router";
 
 @Component({
-  selector: 'app-page-header-admin',
-  templateUrl: './page-header-admin.component.html',
-  styleUrls: ['./page-header-admin.component.css']
+  selector: "app-page-header-admin",
+  templateUrl: "./page-header-admin.component.html",
+  styleUrls: ["./page-header-admin.component.css"]
 })
 export class PageHeaderAdminComponent implements OnInit {
-
-  public currentRoute
+  public currentRoute;
 
   @Output()
-
   public id;
   public visible = false;
 
   constructor(private route: ActivatedRoute) {
-    //this.id = route.snapshot.params.id;
-    this.id = localStorage.getItem('id');
+    // this.id = route.snapshot.params.id;
+    this.id = localStorage.getItem("id");
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   toggle() {
-
     if (this.visible) {
-      document.getElementById('right').style.display = "none";
+      document.getElementById("right").style.display = "none";
       this.visible = false;
     } else {
-      document.getElementById('right').style.display = "flex";
+      document.getElementById("right").style.display = "inline";
       this.visible = true;
     }
-
   }
-
 }

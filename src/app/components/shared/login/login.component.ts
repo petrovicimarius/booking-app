@@ -1,44 +1,43 @@
-import { Component, OnInit, ViewChild, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Company } from '../companies/company';
+import { Component, OnInit, ViewChild, Output } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Company } from "../companies/company";
 
-import { ApiConnectionService } from '../../../connection-services/api-connection/api-connection.service';
-import { Router } from '@angular/router';
+import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('login') loginForm: NgForm;
-  @ViewChild('reset') resetForm: NgForm;
-  @ViewChild('create') createForm: NgForm;
+  @ViewChild("login")
+  loginForm: NgForm;
+  @ViewChild("reset")
+  resetForm: NgForm;
+  @ViewChild("create")
+  createForm: NgForm;
 
   public showHide = true;
 
-
   public company: Company = new Company();
-
   public message: String;
-  public password_message = '';
-
+  public password_message = "";
+  public success_message = "false";
 
   constructor(
     private dataService: ApiConnectionService,
     private router: Router
-  ) { }
+  ) {}
 
   public loginContent = true;
   public resetContent = false;
   public registerContent = false;
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   showMyPass() {
-    this.showHide = !(this.showHide);
+    this.showHide = !this.showHide;
   }
 
   onReset() {
@@ -51,70 +50,67 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser() {
-    console.log('company ', this.company);
+    console.log("company ", this.company);
 
     this.dataService
       .registerUser(this.company)
       // .subscribe(res => this.manageForms(true, false, false));
-      .subscribe((res: any) => {
-        console.log('res', res);
-        //window.location.reload();
-        this.manageForms(true, false, false);
-      }, (err) => {
-        console.log(err);
-      });
+      .subscribe(
+        (res: any) => {
+          console.log("res", res);
+          this.manageForms(true, false, false);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
   getCompanyProfile(): void {
     this.dataService.getProfile().subscribe((res: any) => {
-      console.log('res ', res.company._id);
-      localStorage.setItem('id', res.company._id);
+      console.log("res ", res.company._id);
+      localStorage.setItem("id", res.company._id);
     });
   }
 
   loginUser() {
-    console.log('company ', this.company);
+    console.log("company ", this.company);
 
-    this.dataService
-      .loginUser(this.company)
-      .subscribe((res: any) => {
-        console.log('res ', res);
+    this.dataService.loginUser(this.company).subscribe(
+      (res: any) => {
+        console.log("res ", res);
 
         const token = res.token;
-        console.log('token', token);
-        const success_message = res.auth.toString();
-        console.log('tip', typeof success_message);
-        if (success_message === 'false') {
-          this.password_message = 'Your email or password is invalid, try again!'
-          this.router.navigate(['/login']);
-          console.log('false');
-
-
+        console.log("token", token);
+        if (res.auth) {
+          this.success_message = res.auth.toString();
         }
-        else {
-          localStorage.setItem('token', token);
-          localStorage.setItem('email', this.company.email.toString());
-          localStorage.setItem('success_message', success_message);
+        if (this.success_message === "false") {
+          this.router.navigate(["/login"]);
+        } else {
+          localStorage.setItem("token", token);
+          localStorage.setItem("email", this.company.email.toString());
+          localStorage.setItem("success_message", this.success_message);
           this.getCompanyProfile();
-          console.log('true');
+          console.log("true");
 
-          this.router.navigate(['/offices']);
-          //window.location.reload();
-          this.password_message = '';
+          this.router.navigate(["/offices"]);
+          // window.location.reload();
+          this.password_message = "";
         }
-
-      }, (err) => {
+      },
+      err => {
         console.log(err);
-      });
+        console.log("success_message", this.success_message);
+        this.password_message = "Your email or password is invalid, try again!";
+      }
+    );
   }
 
   // reset password
   resetPassword(): void {
-    this.dataService
-      .resetPassword(this.company)
-      .subscribe(res => {
-        this.manageForms(true, false, false)
-      });
+    this.dataService.resetPassword(this.company).subscribe(res => {
+      this.manageForms(true, false, false);
+    });
   }
-
 }

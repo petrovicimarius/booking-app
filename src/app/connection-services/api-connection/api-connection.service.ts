@@ -71,6 +71,11 @@ export class ApiConnectionService {
       httpOptions
     );
   }
+
+  // updateById(path: String, data: T): Observable<T> {
+  //   return this.http.put<T>(Api.base + path, data, httpOptions);
+  // }
+
   addCompanyService(data: Service): Observable<Service> {
     return this.http.post<Service>(Api.base + Api.service, data, httpOptions);
   }

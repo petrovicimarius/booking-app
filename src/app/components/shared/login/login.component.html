@@ -8,7 +8,8 @@
       <form (ngSubmit)="loginUser()" #login="ngForm">
         <div class="signIn">
           <span class="help-block" style="color: black"> {{message}}</span>
-          <span class="error_message_pass" style="color: black">{{ password_message }}</span>
+          <span class="error_message_pass" *ngIf="password_message" style="color: red"><i class="fa fa-exclamation-triangle">{{
+              password_message }}</i></span>
           <p class="inputInfo">Email adress</p>
           <div>
             <input type="email" name="email_log" id="email_log" class="email" [(ngModel)]="company.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -16,7 +17,8 @@
 
           </div>
           <div class="error_email">
-            <span class="error_message" *ngIf="!email.valid && email.touched ">Please enter a valid email format!</span>
+            <span class="error_message fa fa-exclamation-triangle" *ngIf="!email.valid && email.touched "> Please enter a
+              valid email format!</span>
           </div>
           <p class="inputInfo">Password</p>
           <div class="display_eye">
@@ -28,8 +30,8 @@
 
           </div>
           <div>
-            <span class="error_message" *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please enter at least one:
-              upper-case leter, number, special caracters and minlength 8.</span>
+            <span class="error_message  fa fa-exclamation-triangle" *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please
+              enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
           </div>
           <div class="containerSignIn">
             <button type="submit" class="sign-btn" [disabled]="!login.valid"><span>LOGIN</span></button>
@@ -61,11 +63,12 @@
           <div class="col-md-7">
             <p class="inputInfo">Email adress</p>
             <div>
-              <input type="email" name="email_reset" id="email_reset" class="email" [(ngModel)]="resetUser.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+              <input type="email" name="email_reset" id="email_reset" class="email" [(ngModel)]="company.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                 #email_reset="ngModel" style="margin-bottom: 5px;">
             </div>
             <div class="error_email">
-              <span class="error_message" *ngIf="!email_reset.valid && email_reset.touched ">Please enter a valid email format!</span>
+              <span class="error_message  fa fa-exclamation-triangle" *ngIf="!email_reset.valid && email_reset.touched ">Please
+                enter a valid email format!</span>
             </div>
             <div class="resetBtn">
               <button type="submit" class="sign-btn" [disabled]="!reset.valid">RESET PASSWORD</button>
@@ -102,8 +105,8 @@
                 pattern="[a-zA-Z ]*">
             </div>
             <div class="error_email">
-              <span class="error_message" *ngIf="!first_name.valid && first_name.touched " style="color: black">Your name
-                must contain only characters!</span>
+              <span class="error_message  fa fa-exclamation-triangle" *ngIf="!first_name.valid && first_name.touched ">Your
+                name must contain only characters!</span>
             </div>
             <p class="inputInfo">Email adress</p>
             <div>
@@ -112,7 +115,7 @@
 
             </div>
             <div class="error_email">
-              <span class="error_message" *ngIf="!email_register.valid && email_register.touched " style="color: black">Please
+              <span class="error_message  fa fa-exclamation-triangle" *ngIf="!email_register.valid && email_register.touched ">Please
                 enter a valid email format!</span>
             </div>
             <p class="inputInfo">Password</p>
@@ -124,7 +127,7 @@
               </button>
             </div>
             <div>
-              <span class="error_message_pass" *ngIf="!password_register.valid &&  password_register.touched " style="color: black">Please
+              <span class="error_message_pass  fa fa-exclamation-triangle" *ngIf="!password_register.valid &&  password_register.touched ">Please
                 enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
 

@@ -49,7 +49,6 @@ export class PublicServicesComponent implements OnInit {
     console.log("today", this.today);
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     this.getServices();
     this.getOffice();
@@ -81,15 +80,9 @@ export class PublicServicesComponent implements OnInit {
   }
 
   toggleBook(item): void {
-    // console.log('item', item);
+    this.booking = new Booking();
     this.service = item;
     this.service_id = item._id;
-
-    // this.booking.office = this.id;
-    // this.booking.service = this.service_id;
-    // this.booking.company = localStorage.getItem('public_company_id');
-    // console.log('service', this.service_id);
-
     if (this.bookEnabled) {
       this.bookEnabled = false;
     } else {
@@ -99,7 +92,6 @@ export class PublicServicesComponent implements OnInit {
   toggleUndo(): void {
     this.bookEnabled = false;
     this.sendEnabled = false;
-    // window.location.reload();
   }
   sendBooking(): void {
     this.bookEnabled = false;

@@ -18,16 +18,16 @@ table {
 .bookingsList {
   /* border: 1px solid red; */
 }
-tr:nth-child(4n + 1) {
-  background-color: white;
-}
 tr:nth-child(4n + 2) {
-  background-color: #f8edf8;
+  background-color: white;
 }
 tr:nth-child(4n + 3) {
-  background-color: white;
+  background-color: #f8edf8;
 }
 tr:nth-child(4n + 4) {
+  background-color: white;
+}
+tr:nth-child(4n + 5) {
   background-color: #ebf2f9;
 }
 body {
@@ -62,4 +62,30 @@ input {
   max-width: 80px;
   padding-left: 10px;
   padding-right: 10px;
+}
+.filterBy {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  background: #d966ff;
+  color: white;
+}
+.divFilter {
+  padding-left: 10%;
+  padding-bottom: 20px;
+}
+.filterBy:hover {
+  background: #ffccff;
+}
+@media only screen and (max-width: 400px) {
+  /* .responsive {
+    display: none;
+  }
+  .test {
+    display: inline-table;
+  } */
+  th {
+    padding: 0px;
+  }
 }

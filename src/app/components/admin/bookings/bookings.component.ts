@@ -33,6 +33,8 @@ export class BookingsComponent implements OnInit {
   d;
   e;
   public sortEnabled = false;
+  public show = true;
+  public hide = true;
 
   constructor(private dataService: ApiConnectionService) {}
 
@@ -45,11 +47,11 @@ export class BookingsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.componentInput = "";
+    this.getBookings();
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    this.getBookings();
+    // this.getBookings();
   }
 
   getBookings(): void {
@@ -100,6 +102,17 @@ export class BookingsComponent implements OnInit {
     } else if (item === "time") {
       this.filterBy = "time";
       this.componentInput = this.e;
+    }
+  }
+  changeFilter(): void {
+    if (this.show == true) {
+      this.show = false;
+      this.hide = true;
+      this.getBookings();
+    } else {
+      this.show = true;
+      this.hide = false;
+      this.getBookings();
     }
   }
 }

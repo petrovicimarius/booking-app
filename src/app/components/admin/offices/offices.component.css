@@ -1,271 +1,312 @@
-html{
-    background: #f2f2f2;
-    -webkit-background-size: 100% 100% cover;
-      -moz-background-size: 100% 100% cover;
-      -o-background-size: 100% 100% cover;
-      background-size: 100% 100% cover;
-      /* set the padding and margin to "0" */
-      margin: 0;
-      padding: 0;
-     /* set the position rules */
-    top: 0;
-    left: 0;
+html {
+  background: #f2f2f2;
+  -webkit-background-size: 100% 100% cover;
+  -moz-background-size: 100% 100% cover;
+  -o-background-size: 100% 100% cover;
+  background-size: 100% 100% cover;
+  /* set the padding and margin to "0" */
+  margin: 0;
+  padding: 0;
+  /* set the position rules */
+  top: 0;
+  left: 0;
 }
-.officeList{
-    padding-top: 50px;
-    opacity:1;
-    background-color:#f2f2f2;
-    width:100%;
-    height:100%;
-    z-index:1000;
+.officeList {
+  padding-top: 50px;
+  opacity: 1;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }
-.createOffice{
-    margin: 0 auto;
-    max-width: 700px;
-    margin-bottom: 100px;
+.createOffice {
+  margin: 0 auto;
+  max-width: 700px;
+  margin-bottom: 100px;
 }
-.rectangle{
-    margin-top: 30px;
-    margin-bottom: 30px;
+.rectangle {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
-.create{
-    float: right;
-    border: none;
-    background: transparent;
-    outline: none;
+.create {
+  float: right;
+  border: none;
+  background: transparent;
+  outline: none;
 }
-.createButton{
-    float: right;
-    border: none;
-    background: transparent;
-    outline: none;
+.createButton {
+  float: right;
+  border: none;
+  background: transparent;
+  outline: none;
 }
-.createButton i{
-    color: #d966ff;
+.createButton i {
+  color: #d966ff;
 }
-.createButton i:hover{
-    color:#ffccff;
+.createButton i:hover {
+  color: #ffccff;
 }
-.deleteButton{
-    float: right;
-    border: none;
-    background: transparent;
-    outline: none;
+.deleteButton {
+  float: right;
+  border: none;
+  background: transparent;
+  outline: none;
 }
-.deleteButton i{
-    color: #d966ff;
+.deleteButton i {
+  color: #d966ff;
 }
-.deleteButton i:hover{
-    color:#ffccff;
+.deleteButton i:hover {
+  color: #ffccff;
 }
-.modal{
-    position: fixed;
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-    padding-top: 100px;
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 100px;
 }
-.create i{
-    font-size: 90px;
-    color: #d966ff;
+.create i {
+  font-size: 90px;
+  color: #d966ff;
 }
-.create i:hover{
-    color:#ffccff;
+.create i:hover {
+  color: #ffccff;
 }
-.office{
-    max-width: 700px;
-    margin: 0 auto;
-    height: 280px;
-    border-radius: 5px;
-    background-color: white;
-    outline: none;
-    border: 2px solid #ffe6ff;
+.office {
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #f0f0f5;
+  outline: none;
+  border: 2px solid #ffe6ff;
+  padding-bottom: 20px;
+  text-align: center;
 }
-.officeEdit{
-    max-width: 800px;
-    margin: 0 auto;
-    min-height: 600px;
-    border-radius: 5px;
-    background-color: white;
-    outline: none;
-    border: 2px solid #ffe6ff;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+.officeEdit {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 600px;
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+  border: 2px solid #ffe6ff;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
-.name{
-    border-radius: 5px;
-    border: 1px solid #595959;
-    background-color: white;
-    height: 50px;
-    width: 86%;
-    font-size: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-weight: bold;
-    color: #d966ff;
-    margin-top: 10px;
+.name {
+  border-radius: 5px;
+  border: 1px solid #595959;
+  background-color: white;
+  height: 50px;
+  width: 86%;
+  font-size: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+  color: #d966ff;
+  margin-top: 10px;
 }
-.newName{
-    border-radius: 5px;
-    border: 1px solid #595959;
-    background-color: white;
-    height: 50px;
-    outline: none;
-    font-size: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
+.newName {
+  border-radius: 5px;
+  border: 1px solid #595959;
+  background-color: white;
+  height: 50px;
+  outline: none;
+  font-size: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
 
-    width: 89%;
+  width: 89%;
 }
- .newName:hover, .newName:focus{
-    border: 1px solid #ff99ff;
-} 
-.officeName{
-    /* border: 1px solid green; */
-    width: 600px;
-    height: 50px;
-    padding-left: 25px;
-    font-size: 28px;
+.newName:hover,
+.newName:focus {
+  border: 1px solid #ff99ff;
 }
-.addNewOffice{
-    width: 600px;
-    height: 130px;
-    padding-left: 25px;
-    font-size: 35px;
+.officeName {
+  /* border: 1px solid green; */
+  width: 600px;
+  padding-left: 75px;
+  font-size: 28px;
 }
-.addNewOffice p{
-    color: #d966ff;
-    font-weight: bold;
+.addNewOffice {
+  width: 600px;
+  height: 130px;
+  padding-left: 25px;
+  font-size: 35px;
 }
-.createNewName{
-    height: 110px;
-    font-size: 20px;
+.addNewOffice p {
+  color: #d966ff;
+  font-weight: bold;
 }
-.createNewName p{
-    margin: 0;
+.createNewName {
+  height: 110px;
+  font-size: 20px;
 }
-.createNewDesc{
-    font-size: 20px;
+.createNewName p {
+  margin: 0;
 }
-.createNewDesc p{
-    margin: 0;
+.createNewDesc {
+  font-size: 20px;
 }
-.officeName p{
-    font-weight: bold;
-    color: #d966ff;
-    padding-left: 10px;
+.createNewDesc p {
+  margin: 0;
 }
-.textarea{
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 15px;
-    color: #595959;
-    margin-left: 25px;
-    margin-top: 25px;
+.officeName p {
+  font-weight: bold;
+  color: #d966ff;
+  padding-left: 10px;
 }
-.createTextarea{
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 15px;
-    color: #595959;
-    margin-top: 10px;
-    width: 91%;
-    outline: none;
+.textarea {
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  color: #595959;
+  margin-left: 25px;
+  margin-top: 25px;
 }
-.createTextarea:hover, .createTextarea:focus{
-    border: 1px solid #ff99ff;
+.createTextarea {
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  color: #595959;
+  margin-top: 10px;
+  width: 91%;
+  outline: none;
 }
-.officeDesc{
-    /* border: 1px solid blue; */
-    margin-top: 10px;
-    padding-left: 35px;
-    height: 130px;
-    font-size: 20px;
+.createTextarea:hover,
+.createTextarea:focus {
+  border: 1px solid #ff99ff;
 }
-.officeInfo{
-    /* border: 1px solid; */
-    margin-top: 15px;
-    height: 50px;
-    font-size: 20px;
+.officeDesc {
+  /* border: 1px solid blue; */
+  margin-top: 10px;
+  padding-left: 55px;
+  padding-right: 60px;
+  height: 130px;
+  font-size: 20px;
 }
-.edit{
-    background-color: transparent;
-    outline: none;
-    border: none;
-    height: 20px;
-    margin-top: 15px;
+.officeInfo {
+  /* border: 1px solid; */
+  margin-top: 15px;
+  height: 50px;
+  font-size: 20px;
 }
-.editInfo{
-    padding-left: 25px;
-    color: grey;
-    margin-bottom: 50px;
-    margin-top: 30px;
+.edit {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 20px;
+  margin-top: 15px;
 }
-.edit:hover{
-    color: lightgray;
+.editInfo {
+  padding-left: 25px;
+  color: grey;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
-.delete{
-    background-color: transparent;
-    outline: none;
-    border: none;
-    height: 20px;
-    margin-top: 13px;
-    margin-right: 15px;
+.edit:hover {
+  color: lightgray;
 }
-.delete:hover{
-    color: lightgray;
+.delete {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 20px;
+  margin-top: 13px;
+  margin-right: 15px;
 }
-.edit-delete{
-    display: flex;
+.delete:hover {
+  color: lightgray;
 }
-.firstDiv{
-    width: 50%;
-    margin-left: 25px;
+.edit-delete {
+  display: flex;
 }
-.secondDiv{
-    width: 50%;
-    margin-left: 25px;
+.firstDiv {
+  width: 50%;
+  margin-left: 25px;
 }
-.officeInfo{
-    display: flex;
+.secondDiv {
+  width: 50%;
+  margin-left: 25px;
 }
-.officeInfo p{
-    font-size: 20px;
-    color: grey;
-    margin: 0;
-    margin-top: 10px;
+.officeInfo {
+  display: flex;
 }
-.spaces{
-    width: 33%;
+.officeInfo p {
+  font-size: 20px;
+  color: grey;
+  margin: 0;
+  padding-bottom: 20px;
+}
+.spaces {
+  width: 33%;
+  text-align: center;
+  font-size: 20px;
+}
+.duration {
+  width: 33%;
+  text-align: center;
+  font-size: 20px;
+}
+.price {
+  width: 33%;
+  text-align: center;
+  font-size: 20px;
+}
+.error_message {
+  width: 97%;
+  text-align: center;
+  color: red;
+}
+.createButton:disabled i {
+  color: grey;
+}
+.responsive {
+  display: flex;
+}
+.icons {
+  font-size: 80px;
+}
+@media only screen and (max-width: 650px) {
+  .officeInfo {
+    display: inline;
     text-align: center;
-    font-size: 20px;
+  }
+  .spaces,
+  .duration,
+  .price {
+    width: 100%;
+  }
 }
-.duration{
-    width: 33%;
+
+@media only screen and (max-width: 800px) {
+  .responsive {
+    display: inline;
     text-align: center;
-    font-size: 20px;
-}
-.price{
-    width: 33%;
+  }
+  .firstDiv,
+  .secondDiv {
+    width: 90%;
+  }
+  .newName,
+  .createTextarea {
     text-align: center;
-    font-size: 20px;
-}
-.error_message{
-    width: 97%;
-    text-align: center;
-    color: red;
-}
-.createButton:disabled i{
-    color: grey;
+  }
+  .icons {
+    font-size: 50px;
+  }
 }

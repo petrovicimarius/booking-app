@@ -2,22 +2,23 @@
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="companiesList">
-  <div class="company" *ngFor="let company of companiesList">
-    <div class="logo">
-      <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+  <div class="rectangle">
+    <div class="company" *ngFor="let company of companiesList">
+      <div class="logo">
+        <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+      </div>
+      <div class="companyInfo">
+        <div class="companyName">
+          <p>{{company.name}}</p>
+        </div>
+        <div class="companyDesc">
+          <p>{{company.description}}</p>
+        </div>
+        <div>
+          <button type="button" class="selectCompany" (click)="goToOffices(company)">SELECT</button>
+        </div>
+      </div>
     </div>
-    <div class="companyInfo">
-      <div class="companyName">
-        <p>{{company.name}}</p>
-      </div>
-      <div class="companyDesc">
-        <p>{{company.description}}</p>
-      </div>
-      <div>
-        <button type="button" class="selectCompany" (click)="goToOffices(company)">SELECT</button>
-      </div>
-    </div>
-
   </div>
 
 </div>

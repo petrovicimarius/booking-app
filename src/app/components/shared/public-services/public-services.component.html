@@ -28,29 +28,31 @@
   </div>
 
   <div class="serviceList" *ngFor="let service of servicesList">
-    <div class="service">
-      <div class="serviceName">
-        <p>{{service.name}}</p>
-      </div>
-      <div class="serviceDesc">
-        <p>{{service.description}}</p>
-      </div>
-      <div class="serviceInfo">
-        <div class="spaces">
-          <span>{{service.spaces}}</span>
-          <p>Spaces</p>
+    <div class="rectangle">
+      <div class="service">
+        <div class="serviceName">
+          <p>{{service.name}}</p>
         </div>
-        <div class="duration">
-          <span>{{service.duration}}</span>
-          <p>Duration</p>
+        <div class="serviceDesc">
+          <p>{{service.description}}</p>
         </div>
-        <div class="price">
-          <span>{{service.price}}</span>
-          <p>Price</p>
+        <div class="serviceInfo">
+          <div class="spaces">
+            <span>{{service.spaces}}</span>
+            <p>Spaces</p>
+          </div>
+          <div class="duration">
+            <span>{{service.duration}}</span>
+            <p>Duration</p>
+          </div>
+          <div class="price">
+            <span>{{service.price}}</span>
+            <p>Price</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <button type="button" class="bookNow" (click)="toggleBook(service)">BOOK NOW</button>
+        <div>
+          <button type="button" class="bookNow" (click)="toggleBook(service)">BOOK NOW</button>
+        </div>
       </div>
     </div>
   </div>
@@ -65,46 +67,61 @@
       </div>
       <div class="formular">
         <div class="firstDiv">
-          <p>First name</p>
-          <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required #first_name="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a valid
-              first name format!
-            </i>
+          <div class="inputDesign">
+            <p>First name</p>
+            <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required #first_name="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a valid
+                first name format!
+              </i>
+            </div>
           </div>
-          <p>Phone</p>
-          <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required #phone="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
-            </i>
+          <div class="inputDesign">
+            <p>Last name</p>
+            <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required #last_name="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a valid
+                last name format!
+              </i>
+            </div>
           </div>
-          <p>Address</p>
-          <input type="text" class="address" name="address" [(ngModel)]="booking.address" required #address="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid address
-              format!
-            </i>
-          </div>
+
         </div>
         <div class="secondDiv">
-          <p>Last name</p>
-          <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required #last_name="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a valid last
-              name format!
-            </i>
+          <div class="inputDesign">
+            <p>Phone</p>
+            <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required #phone="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
+              </i>
+            </div>
           </div>
-          <p>Email</p>
-          <input type="text" class="email" name="email" [(ngModel)]="booking.email" required #email="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
-            </i>
+          <div class="inputDesign">
+            <p>Email</p>
+            <input type="text" class="email" name="email" [(ngModel)]="booking.email" required #email="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
+              </i>
+            </div>
           </div>
-          <p>Date</p>
-          <input class="date" type="date" name="date" [min]="today" [(ngModel)]="booking.time" required #date="ngModel">
-          <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! date.valid && date.touched"> Please choose the date!
-            </i>
+        </div>
+        <div class="thirdDiv">
+          <div class="inputDesign">
+            <p>Address</p>
+            <input type="text" class="address" name="address" [(ngModel)]="booking.address" required #address="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid address
+                format!
+              </i>
+            </div>
+          </div>
+          <div class="inputDesign">
+            <p>Date</p>
+            <input class="date" type="date" name="date" [min]="today" [(ngModel)]="booking.time" required #date="ngModel">
+            <div class="error_message">
+              <i class="fa fa-exclamation-triangle" *ngIf="! date.valid && date.touched"> Please choose the date!
+              </i>
+            </div>
           </div>
         </div>
       </div>

@@ -2,9 +2,27 @@
   crossorigin="anonymous"> -->
 
 <div id="navbar">
-  <a (click)="toggle()" class="menubtn">
-    <i class="fa fa-bars" style="font-size: 30px"></i>
-  </a>
+  <div class="dropdown">
+    <button class="dropdownButton"><i class="fa fa-bars" style="font-size: 30px"></i></button>
+    <div class="dropdown-content">
+      <div class="content">
+        <a [routerLink]="['/offices']" routerLinkActive="isActive">Offices
+        </a>
+      </div>
+      <div class="content">
+        <a [routerLink]="['/services']" routerLinkActive="isActive">Services
+        </a>
+      </div>
+      <div class="content">
+        <a [routerLink]="['/bookings']" routerLinkActive="isActive">Bookings
+        </a>
+      </div>
+      <div class="content">
+        <a [routerLink]="['/profile']" routerLinkActive="isActive">Profile
+        </a>
+      </div>
+    </div>
+  </div>
   <span class="imgP" style="margin-top: 40px;">
     <a [routerLink]="['/offices']" class="navbar-brand">
       Booking App
@@ -12,20 +30,6 @@
 
   </span>
   <div id="right">
-
-    <span class="menuOpt" [hidden]="currentRoute != '/users'">
-      <ul class="pages">
-        <a [routerLink]="['/offices']" routerLinkActive="isActive">Offices
-        </a>
-        <a [routerLink]="['/services']" routerLinkActive="isActive">Services
-        </a>
-        <a [routerLink]="['/bookings']" routerLinkActive="isActive">Bookings
-        </a>
-        <a [routerLink]="['/profile']" routerLinkActive="isActive">Profile
-        </a>
-      </ul>
-    </span>
-
     <span class="menuOpt" [hidden]="currentRoute == '/users'">
       <ul class="pages">
         <a [routerLink]="['/offices']" routerLinkActive="isActive">Offices
