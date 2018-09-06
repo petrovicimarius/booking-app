@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Output } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Company } from "../companies/company";
-
+import Api from "../../../connection-services/api-connection/api-routes";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
 import { Router } from "@angular/router";
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   public success_message = "false";
 
   constructor(
-    private dataService: ApiConnectionService,
+    private _company: ApiConnectionService<Company>,
     private router: Router
   ) {}
 
@@ -43,6 +43,9 @@ export class LoginComponent implements OnInit {
   onReset() {
     this.resetPassword();
   }
+  goToCompanies() {
+    this.router.navigate(["/companies"]);
+  }
   manageForms(login: boolean, register: boolean, reset: boolean): void {
     this.loginContent = login;
     this.registerContent = register;
@@ -52,22 +55,19 @@ export class LoginComponent implements OnInit {
   registerUser() {
     console.log("company ", this.company);
 
-    this.dataService
-      .registerUser(this.company)
-      // .subscribe(res => this.manageForms(true, false, false));
-      .subscribe(
-        (res: any) => {
-          console.log("res", res);
-          this.manageForms(true, false, false);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    this._company.post(`${Api.base}${Api.register}`, this.company).subscribe(
+      (res: any) => {
+        console.log("res", res);
+        this.manageForms(true, false, false);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   getCompanyProfile(): void {
-    this.dataService.getProfile().subscribe((res: any) => {
+    this._company.get(`${Api.base}${Api.profile}`).subscribe((res: any) => {
       console.log("res ", res.company._id);
       localStorage.setItem("id", res.company._id);
     });
@@ -76,26 +76,33 @@ export class LoginComponent implements OnInit {
   loginUser() {
     console.log("company ", this.company);
 
-    this.dataService.loginUser(this.company).subscribe(
+    this._company.post(`${Api.base}${Api.login}`, this.company).subscribe(
       (res: any) => {
         console.log("res ", res);
+        const token = res.token.toString();
+        const auth = res.auth.toString();
+        localStorage.setItem("token", token);
+        localStorage.setItem("auth", auth);
+        console.log("auth", auth);
 
-        const token = res.token;
+        this._company.token = token;
+        this._company.httpOptions = {
+          headers: {
+            "x-access-token": token || ""
+          }
+        };
+
         console.log("token", token);
-        if (res.auth) {
-          this.success_message = res.auth.toString();
-        }
-        if (this.success_message === "false") {
+
+        if (auth === "false") {
           this.router.navigate(["/login"]);
         } else {
           localStorage.setItem("token", token);
           localStorage.setItem("email", this.company.email.toString());
-          localStorage.setItem("success_message", this.success_message);
+          // localStorage.setItem("success_message", this.success_message);
           this.getCompanyProfile();
           console.log("true");
-
           this.router.navigate(["/offices"]);
-          // window.location.reload();
           this.password_message = "";
         }
       },
@@ -109,8 +116,10 @@ export class LoginComponent implements OnInit {
 
   // reset password
   resetPassword(): void {
-    this.dataService.resetPassword(this.company).subscribe(res => {
-      this.manageForms(true, false, false);
-    });
+    this._company
+      .post(`${Api.base}${Api.reset}`, this.company)
+      .subscribe(res => {
+        this.manageForms(true, false, false);
+      });
   }
 }

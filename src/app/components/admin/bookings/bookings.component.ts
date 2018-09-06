@@ -1,16 +1,7 @@
-import {
-  Component,
-  OnInit,
-  HostListener,
-  Input,
-  OnDestroy,
-  ViewChild,
-  ElementRef
-} from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Booking } from "../../../components/admin/bookings/booking";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-
-import { MatSort, MatTableDataSource } from "@angular/material";
+import Api from "../../../connection-services/api-connection/api-routes";
 
 @Component({
   selector: "app-bookings",
@@ -36,83 +27,81 @@ export class BookingsComponent implements OnInit {
   public show = true;
   public hide = true;
 
-  constructor(private dataService: ApiConnectionService) {}
-
-  displayedColumns: string[] = ["name", "email", "phone", "time"];
-  dataSource = new MatTableDataSource(this.bookingsList);
-
-  @ViewChild(MatSort)
-  sort: MatSort;
+  constructor(private _booking: ApiConnectionService<Booking>) {}
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
     this.componentInput = "";
     this.getBookings();
   }
 
-  ngAfterViewInit() {
-    // this.getBookings();
-  }
+  ngAfterViewInit() {}
 
   getBookings(): void {
-    this.dataService.getCompanyBookings().subscribe((res: any) => {
-      this.bookingsList = res.bookings;
-      for (let i = 0; i < res.bookings.length; i++) {
-        this.nameArray.push(res.bookings[i].first_name);
-        this.emailArray.push(res.bookings[i].email);
-      }
-      console.log("res", res.bookings);
-      console.log("nameArray", this.nameArray);
-      console.log("emailArray", this.emailArray);
-    });
+    this._booking.get(`${Api.base}${Api.booking}`).subscribe(
+      (res: any) => {
+        this.bookingsList = res.bookings;
+        for (let i = 0; i < res.bookings.length; i++) {
+          this.nameArray.push(res.bookings[i].first_name);
+          this.emailArray.push(res.bookings[i].email);
+        }
+      },
+      err => console.log("Err ", err)
+    );
   }
 
-  toggleSort(item): void {
-    if (item === "name") {
-      if (!this.sortEnabled) {
-        this.sortBy = "last_name";
-        this.sortEnabled = true;
-      } else {
-        this.sortBy = "first_name";
-        this.sortEnabled = false;
-      }
-    } else if (item === "email") {
-      this.sortBy = "email";
-    } else if (item === "phone") {
-      this.sortBy = "phone";
-    } else if (item === "time") {
-      this.sortBy = "time";
+  toggleSort(item) {
+    switch (item) {
+      case "name":
+        if (!this.sortEnabled) {
+          this.sortBy = "last_name";
+          this.sortEnabled = true;
+        } else {
+          this.sortBy = "first_name";
+          this.sortEnabled = false;
+        }
+        break;
+      case "email":
+        this.sortBy = "email";
+        break;
+      case "phone":
+        this.sortBy = "phone";
+        break;
+      case "time":
+        this.sortBy = "time";
+        break;
+      default:
+        break;
     }
   }
 
-  toggleFilter(item): void {
-    console.log("filterBy", item);
-    if (item === "first_name") {
-      this.filterBy = "first_name";
-      this.componentInput = this.a;
-    } else if (item === "last_name") {
-      this.filterBy = "last_name";
-      this.componentInput = this.b;
-    } else if (item === "email") {
-      this.filterBy = "email";
-      this.componentInput = this.c;
-    } else if (item === "phone") {
-      this.filterBy = "phone";
-      this.componentInput = this.d;
-    } else if (item === "time") {
-      this.filterBy = "time";
-      this.componentInput = this.e;
+  toggleFilter(item) {
+    switch (item) {
+      case "first_name":
+        this.filterBy = "first_name";
+        this.componentInput = this.a;
+        break;
+      case "last_name":
+        this.filterBy = "last_name";
+        this.componentInput = this.b;
+        break;
+      case "email":
+        this.filterBy = "email";
+        this.componentInput = this.c;
+        break;
+      case "phone":
+        this.filterBy = "phone";
+        this.componentInput = this.d;
+        break;
+      case "time":
+        this.filterBy = "time";
+        this.componentInput = this.e;
+        break;
+      default:
+        break;
     }
   }
-  changeFilter(): void {
-    if (this.show == true) {
-      this.show = false;
-      this.hide = true;
-      this.getBookings();
-    } else {
-      this.show = true;
-      this.hide = false;
-      this.getBookings();
-    }
+
+  changeFilter() {
+    this.show = !this.show;
   }
 }

@@ -4,7 +4,7 @@
 <div class="serviceList">
   <div class="createService">
     <button class="create">
-      <i class="fa fa-plus-circle" (click)="toggleAdd()"></i>
+      <i class="fa fa-plus-circle" title="Add new service" (click)="toggleAdd()"></i>
     </button>
   </div>
   <div class="rectangle" *ngFor="let service of serviceList">
@@ -16,10 +16,10 @@
         </div>
 
         <button class="edit">
-          <i class="fa fa-edit" style="font-size:30px;" (click)="toggleEdit(service)"></i>
+          <i class="fa fa-edit" style="font-size:30px;" title="Edit this service" (click)="toggleEdit(service)"></i>
         </button>
         <button class="delete">
-          <i class="fa fa-trash-o" style="font-size:30px;" (click)="deleteService(service)"></i>
+          <i class="fa fa-trash-o" style="font-size:30px;" title="Delete this service" (click)="deleteService(service)"></i>
 
         </button>
       </div>
@@ -27,7 +27,7 @@
         <p>{{service.description}}</p>
       </div>
       <div class="office">
-        <p>{{service.office_id.name}}</p>
+        <p *ngIf="service.office_id">{{service.office_id.name}}</p>
       </div>
       <div class="serviceInfo">
         <div class="spaces">
@@ -52,11 +52,11 @@
         <div class="addNewService">
           <p>Edit service</p>
         </div>
-        <button type="submit" class="createButton" [disabled]="!edit.valid">
+        <button type="submit" class="createButton" title="Save changes" [disabled]="!edit.valid">
           <i class="fa fa-save icons"></i>
         </button>
         <button class="deleteButton">
-          <i class="fa fa-times-circle icons" (click)="toggleUndo()"></i>
+          <i class="fa fa-times-circle icons" title="Cancel" (click)="toggleUndo()"></i>
         </button>
       </div>
       <p class="editInfo">SERVICE DETAILS</p>
@@ -113,8 +113,8 @@
       </div>
       <div class="companyOffice">
         <p>Select office</p>
-        <select class="selectOffice" name="select" [(ngModel)]="serviceData.office_id._id" (click)="getOfficeId(serviceData)" required
-          #select="ngModel">
+        <!-- *ngInit="serviceData.office_id AS serviceData.office_id._id" -->
+        <select class="selectOffice" name="select" [(ngModel)]="serviceData.office_id" required #select="ngModel">
           <option *ngFor="let office of officesList" class="" [value]="office._id">{{office.name}}</option>
         </select>
         <div class="error_message">
@@ -127,16 +127,16 @@
 
   <!-- create service -->
   <div class="modal" *ngIf="createEnabled">
-    <form class="serviceEdit" (ngSubmit)="addService(serviceData)" #create="ngForm">
+    <form class="serviceEdit" (ngSubmit)="addService()" #create="ngForm">
       <div class="edit-delete">
         <div class="addNewService">
           <p>Create new service</p>
         </div>
-        <button type="submit" class="createButton" [disabled]="!create.valid">
+        <button type="submit" class="createButton" title="Create service" [disabled]="!create.valid">
           <i class="fa fa-plus-circle icons"></i>
         </button>
         <button class="deleteButton">
-          <i class="fa fa-times-circle icons" (click)="toggleUndo()"></i>
+          <i class="fa fa-times-circle icons" title="Cancel" (click)="toggleUndo()"></i>
         </button>
       </div>
       <p class="editInfo">SERVICE DETAILS</p>

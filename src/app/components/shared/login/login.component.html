@@ -4,8 +4,8 @@
   <!-- login page -->
   <div class="container content" *ngIf="loginContent">
     <div class="row">
-      <img class="banner" src="./assets/booking.png">
-      <form (ngSubmit)="loginUser()" #login="ngForm">
+      <img class="banner" src="./assets/booking.png" (click)="goToCompanies()">
+      <form (ngSubmit)="loginUser()" #login="ngForm" class="form">
         <div class="signIn">
           <span class="help-block" style="color: black"> {{message}}</span>
           <span class="error_message_pass" *ngIf="password_message" style="color: red"><i class="fa fa-exclamation-triangle">{{
@@ -24,6 +24,7 @@
           <div class="display_eye">
             <input type="{{showHide ? 'password' : 'text'}}" name="password_log" id="password_log" class="password" [(ngModel)]="company.password"
               required pattern=".{4,}" #passwordlogin="ngModel">
+
             <button type="button" (mousedown)="showMyPass()" class="showPassword">
               <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
             </button>
@@ -58,7 +59,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <img class="banner" src="./assets/booking.png">
+        <img class="banner" src="./assets/booking.png" (click)="goToCompanies()">
         <form (ngSubmit)="resetPassword()" #reset="ngForm">
           <div class="col-md-7">
             <p class="inputInfo">Email adress</p>
@@ -95,7 +96,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <img class="banner" src="./assets/booking.png">
+        <img class="banner" src="./assets/booking.png" (click)="goToCompanies()">
         <form (ngSubmit)="registerUser()" #create="ngForm">
           <div class="col-md-7">
             <span class="help-block" style="color: black"> {{message}}</span>

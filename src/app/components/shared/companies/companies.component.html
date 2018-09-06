@@ -6,6 +6,10 @@
     <div class="company" *ngFor="let company of companiesList">
       <div class="logo">
         <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+        <div class="rating">
+          <rating [ngModel]="starsCount" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
+          </rating>
+        </div>
       </div>
       <div class="companyInfo">
         <div class="companyName">
@@ -14,8 +18,8 @@
         <div class="companyDesc">
           <p>{{company.description}}</p>
         </div>
-        <div>
-          <button type="button" class="selectCompany" (click)="goToOffices(company)">SELECT</button>
+        <div class="select">
+          <button type="button" class="selectCompany" title="Select this company" (click)="goToOffices(company)">SELECT</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <app-page-header>
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div>
+<div style="padding-top: 150px;">
   <div class="company">
     <div class="logo">
       <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
@@ -37,9 +37,15 @@
           <p>Phone</p>
         </div>
       </div>
-      <div>
-        <button type="button" class="selectOffice" (click)="goToServices(office)">SELECT</button>
+      <div class="map">
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
       </div>
+      <div>
+        <button type="button" class="selectOffice" title="Select this office" (click)="goToServices(office)">SELECT</button>
+      </div>
+
     </div>
   </div>
 </div>

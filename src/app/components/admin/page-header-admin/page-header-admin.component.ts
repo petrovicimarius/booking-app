@@ -1,10 +1,5 @@
-import { Component, OnInit, ViewChild, Output } from "@angular/core";
-import {
-  Router,
-  Route,
-  RoutesRecognized,
-  ActivatedRoute
-} from "@angular/router";
+import { Component, OnInit, Output } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-page-header-admin",
@@ -19,7 +14,6 @@ export class PageHeaderAdminComponent implements OnInit {
   public visible = false;
 
   constructor(private route: ActivatedRoute) {
-    // this.id = route.snapshot.params.id;
     this.id = localStorage.getItem("id");
   }
 

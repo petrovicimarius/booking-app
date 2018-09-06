@@ -1,25 +1,26 @@
 import { Component, OnInit } from "@angular/core";
-import { Company } from "../../shared/companies/company";
 import { Service } from "../../admin/services/service";
 import { Office } from "../offices/office";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
+import Api from "../../../connection-services/api-connection/api-routes";
 
 @Component({
   selector: "app-services",
   templateUrl: "./services.component.html",
   styleUrls: ["./services.component.css"]
 })
-export class ServicesComponent<T> implements OnInit {
-  public company: Company = new Company();
+export class ServicesComponent implements OnInit {
   public serviceList: Service[] = [];
   public officesList: Office[] = [];
   public serviceData: Service = new Service();
-
   public editEnabled = false;
   public createVisible = false;
   public createEnabled = false;
 
-  constructor(private dataService: ApiConnectionService) {}
+  constructor(
+    private _services: ApiConnectionService<Service>,
+    private _offices: ApiConnectionService<Office>
+  ) {}
 
   ngOnInit() {}
 
@@ -28,43 +29,57 @@ export class ServicesComponent<T> implements OnInit {
     this.getOffices();
   }
 
-  getServices(): void {
-    this.dataService.getCompanyServices().subscribe((res: any) => {
-      console.log("res", res.services);
-      this.serviceList = res.services;
-    });
+  getServices() {
+    this._services.get(`${Api.base}${Api.service}`).subscribe(
+      (res: any) => {
+        this.serviceList = res.services;
+        console.log("res ser", res.services);
+      },
+      err => console.log("Err ", err)
+    );
   }
 
-  getOffices(): void {
-    this.dataService.getCompanyOffices().subscribe((res: any) => {
-      console.log("res offices", res.offices);
-      this.officesList = res.offices;
-    });
+  getOffices() {
+    this._offices.get(`${Api.base}${Api.office}`).subscribe(
+      (res: any) => {
+        this.officesList = res.offices;
+        console.log("res off", res);
+      },
+      err => console.log("Err ", err)
+    );
   }
 
-  deleteService(item): void {
-    console.log("rty", item);
-    this.dataService.deleteCompanyService(item._id).subscribe((res: any) => {
-      console.log(res);
-      this.serviceList.splice(item, 1);
-      console.log(this.serviceList);
-    });
-    this.getServices();
+  deleteService(item) {
+    console.log("serviceData", item);
+    this._services
+      .delete(`${Api.base}${Api.service}${"/"}${item._id}`)
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          this.serviceList.splice(item, 1);
+          console.log(this.serviceList);
+          this.getServices();
+        },
+        err => console.log("Err ", err)
+      );
   }
 
-  // update() {
-  //   this.dataService
-  //     .updateById(
-  //       `${Api.base}${Api.service}${this.serviceData.id}`,
-  //       this.serviceData
-  //     )
-  //     .subscribe(
-  //       (res: any) => {
-  //         console.log("res ", res);
-  //       },
-  //       err => console.log("Err ", err)
-  //     );
-  // }
+  update() {
+    console.log("serviceData", this.serviceData);
+    this._services
+      .put(
+        `${Api.base}${Api.service}${"/"}${this.serviceData._id}`,
+        this.serviceData
+      )
+      .subscribe(
+        (res: any) => {
+          console.log("res ", res);
+          this.getServices();
+        },
+        err => console.log("Err ", err)
+      );
+    this.toggleUndo();
+  }
 
   toggleEdit(service): void {
     this.serviceData = service;
@@ -76,18 +91,17 @@ export class ServicesComponent<T> implements OnInit {
     }
   }
 
-  addService(item): void {
-    this.dataService.addCompanyService(item).subscribe((res: any) => {});
+  addService() {
+    this._services
+      .post(`${Api.base}${Api.service}`, this.serviceData)
+      .subscribe(
+        (res: any) => {
+          console.log("res ", res);
+          this.getServices();
+        },
+        err => console.log("Err ", err)
+      );
     this.createEnabled = false;
-    this.getServices();
-  }
-
-  updateService(item): void {
-    this.dataService
-      .updateCompanyService(item._id, item)
-      .subscribe((res: any) => {});
-    this.editEnabled = false;
-    this.getServices();
   }
 
   toggleAdd(): void {
@@ -108,9 +122,5 @@ export class ServicesComponent<T> implements OnInit {
     } else {
       this.createEnabled = false;
     }
-  }
-
-  getOfficeId(item): void {
-    console.log("getId", item.id);
   }
 }

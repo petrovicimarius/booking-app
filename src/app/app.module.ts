@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
-import { FlatpickrModule } from "angularx-flatpickr";
 import { AppComponent } from "./app.component";
 import { BookingsComponent } from "./components/admin/bookings/bookings.component";
 import { ProfileComponent } from "./components/admin/profile/profile.component";
@@ -21,14 +20,16 @@ import { ArraySortPipe } from "./sort-array.pipe";
 import { AuthGuard } from "./connection-services/auth-guard.service";
 import { AuthService } from "./connection-services/auth.service";
 import { ApiConnectionService } from "./connection-services/api-connection/api-connection.service";
+import { RatingModule } from "ngx-rating";
+import { AgmCoreModule } from "@agm/core";
 
 const routes: Routes = [
-  { path: "services", component: ServicesComponent },
+  { path: "services", component: ServicesComponent, canActivate: [AuthGuard] },
   { path: "companies", component: CompaniesComponent },
-  { path: "offices", component: OfficesComponent },
+  { path: "offices", component: OfficesComponent, canActivate: [AuthGuard] },
   { path: "offices/:id", component: PublicOfficesComponent },
   { path: "services/:id", component: PublicServicesComponent },
-  { path: "bookings", component: BookingsComponent },
+  { path: "bookings", component: BookingsComponent, canActivate: [AuthGuard] },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "**", redirectTo: "companies" }
@@ -55,8 +56,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    FlatpickrModule.forRoot(),
     HttpClientModule,
+    RatingModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAqcFHBPQuY6E-Fd5mn9DKlks8tHhHHewM"
+    }),
     RouterModule.forRoot(routes, { useHash: false })
   ],
 

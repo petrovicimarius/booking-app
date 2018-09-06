@@ -1,7 +1,7 @@
 <app-page-header>
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div>
+<div style="padding-top: 150px;">
   <div class="officeHead">
     <div class="office">
       <div class="officeName">
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div>
-          <button type="button" class="bookNow" (click)="toggleBook(service)">BOOK NOW</button>
+          <button type="button" class="bookNow" title="Book this service" (click)="toggleBook(service)">BOOK NOW</button>
         </div>
       </div>
     </div>
@@ -144,6 +144,12 @@
       <div class="confirmation">
         <p>In a couple of seconds a confirmation email will be sent to your email address with all the details for your reservation.
           Thank you for using our services!</p>
+      </div>
+      <div class="rating">
+        <p>RATE US</p>
+        <rating [(ngModel)]="starsCount" (click)="count()" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="false"
+          [disabled]="false" [required]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
+        </rating>
       </div>
       <div class="buttonSize">
         <button type="button" class="closeButton" (click)="toggleUndo()">CLOSE</button>

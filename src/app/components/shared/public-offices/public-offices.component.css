@@ -2,12 +2,12 @@
   max-width: 700px;
   margin: 0 auto;
   margin-top: 50px;
-  padding-left: 30px;
   background: white;
   outline: none;
   border: 2px solid #ffe6ff;
   border-radius: 5px;
   text-align: center;
+  margin-bottom: 40px;
 }
 .officeList {
   padding-left: 20px;
@@ -39,6 +39,7 @@
   font-size: 20px;
   padding-top: 5px;
   margin-bottom: 20px;
+  margin-top: 30px;
 }
 .selectOffice:hover {
   background: #ffccff;
@@ -63,7 +64,6 @@
   padding-top: 40px;
 }
 .companyName {
-  /* border: 1px solid green; */
   font-size: 23px;
   padding-right: 10px;
 }
@@ -72,7 +72,6 @@
   font-weight: bold;
 }
 .companyDesc {
-  /* border: 1px solid blue; */
   font-size: 17px;
   padding-right: 10px;
 }
@@ -81,7 +80,17 @@
   padding-right: 20px;
   padding-top: 20px;
 }
-
+agm-map {
+  height: 200px;
+}
+.map {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ffccff;
+}
+.map:hover {
+  opacity: 0.7;
+}
 @media only screen and (max-width: 700px) {
   .company {
     display: block;
@@ -100,4 +109,9 @@
     width: 100%;
   }
 }
-/* @import "companies.component.css"; */
+@media only screen and (max-width: 500px) {
+  /* agm-map,
+  .map {
+    width: 200px;
+  } */
+}

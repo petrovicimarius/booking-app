@@ -1,33 +1,50 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-// import { ClickOutsideModule } from 'ng-click-outside';
+import { Component, OnInit, ElementRef } from "@angular/core";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import { Router } from "@angular/router";
 import { Office } from "../offices/office";
+import Api from "../../../connection-services/api-connection/api-routes";
 
 @Component({
   selector: "app-offices",
   templateUrl: "./offices.component.html",
   styleUrls: ["./offices.component.css"]
+  // host: { "(document:click)": "handleClick($event)" }
 })
-export class OfficesComponent implements OnInit {
+export class OfficesComponent<T> implements OnInit {
+  [x: string]: any;
   public officesList: Office[] = [];
   public officeData: Office = new Office();
-
+  public elementRef;
   public editEnabled = false;
   public createVisible = false;
   public createEnabled = false;
 
   constructor(
-    private dataService: ApiConnectionService,
-    private router: Router,
-    private http: HttpClient
-  ) {}
+    private _office: ApiConnectionService<Office>,
+    private _element: ElementRef
+  ) {
+    this.elementRef = _element;
+  }
 
   ngOnInit() {}
 
   ngAfterViewInit() {
     this.getOffices();
+  }
+
+  handleClick(event) {
+    let clickedComponent = event.target;
+    let inside = false;
+    do {
+      if (clickedComponent === this.elementRef.nativeElement) {
+        inside = true;
+      }
+      this.clickedComponent = clickedComponent.parentNode;
+    } while (clickedComponent);
+    if (inside) {
+      console.log("inside");
+    } else {
+      console.log("outside");
+    }
   }
 
   onClickedOutside(e: Event) {
@@ -36,37 +53,48 @@ export class OfficesComponent implements OnInit {
   }
 
   getOffices(): void {
-    this.dataService.getCompanyOffices().subscribe((res: any) => {
-      console.log("res offices", res.offices);
-      this.officesList = res.offices;
-    });
+    this._office.get(`${Api.base}${Api.office}`).subscribe(
+      (res: any) => {
+        console.log("res offices", res.offices);
+        this.officesList = res.offices;
+      },
+      err => console.log("Err ", err)
+    );
   }
 
   deleteOffice(item): void {
-    this.dataService.deleteCompanyOffice(item._id).subscribe((res: any) => {
-      this.officesList.splice(item, 1);
-      console.log(this.officesList);
-      console.log("res", res);
-    });
-    this.getOffices();
+    this._office.delete(`${Api.base}${Api.office}${"/"}${item._id}`).subscribe(
+      (res: any) => {
+        this.officesList.splice(item, 1);
+        console.log("res", res);
+        this.getOffices();
+      },
+      err => console.log("Err ", err)
+    );
   }
 
   updateOffice(item): void {
-    this.dataService
-      .updateCompanyOffice(item._id, item)
-      .subscribe((res: any) => {
-        console.log("res", res);
-      });
+    this._office
+      .put(`${Api.base}${Api.office}${"/"}${item._id}`, this.officeData)
+      .subscribe(
+        (res: any) => {
+          console.log("res", res);
+          this.getOffices();
+        },
+        err => console.log("Err ", err)
+      );
     this.editEnabled = false;
-    this.getOffices();
   }
 
   addOffice(item): void {
-    this.dataService.addCompanyOffice(item).subscribe((res: any) => {
-      console.log("res", res);
-    });
+    this._office.post(`${Api.base}${Api.office}`, this.officeData).subscribe(
+      (res: any) => {
+        console.log("res", res);
+        this.getOffices();
+      },
+      err => console.log("Err ", err)
+    );
     this.createEnabled = false;
-    this.getOffices();
   }
 
   toggleEdit(service): void {

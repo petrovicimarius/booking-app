@@ -6,17 +6,17 @@
     <button class="dropdownButton"><i class="fa fa-bars" style="font-size: 30px"></i></button>
     <div class="dropdown-content">
       <div class="content">
-        <a [routerLink]="['/companies']" routerLinkActive="isActive">Companies
+        <a [routerLink]="['/companies']" title="Go to companies" routerLinkActive="isActive">Companies
         </a>
       </div>
       <div class="content">
-        <a [routerLink]="['/login']" routerLinkActive="isActive"> Log In
+        <a [routerLink]="['/login']" title="Log In" routerLinkActive="isActive"> Log In
         </a>
       </div>
     </div>
   </div>
   <span class="imgP" style="margin-top: 40px;">
-    <a [routerLink]="['/companies']" class="navbar-brand">
+    <a [routerLink]="['/companies']" title="Go to Companies" class="navbar-brand">
       Booking App
     </a>
 
@@ -24,9 +24,9 @@
   <div id="right">
     <span class="menuOpt" [hidden]="currentRoute == '/users'">
       <ul class="pages">
-        <a [routerLink]="['/companies']" routerLinkActive="isActive">Companies
+        <a [routerLink]="['/companies']" title="Go to Companies" routerLinkActive="isActive">Companies
         </a>
-        <a [routerLink]="['/login']" routerLinkActive="isActive"> Log In
+        <a [routerLink]="['/login']" title="Log In" routerLinkActive="isActive"> Log In
         </a>
       </ul>
     </span>

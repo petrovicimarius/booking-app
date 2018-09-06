@@ -1,41 +1,43 @@
 <app-page-header-admin>
 </app-page-header-admin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="padding-top: 80px;">
+<div style="padding-top: 200px;">
   <div class="divFilter">
-    <button class="filterBy" (click)="changeFilter()">Change filter </button>
+    <button class="filterBy" title="Show only 2 filters" (click)="changeFilter()">Change filter </button>
   </div>
   <table class="table">
     <tr class="head">
-      <th *ngIf="show">Name<button type="button" class="button" (click)="toggleSort('name')"><i class="fa fa-arrow-down"></i></button></th>
-      <th *ngIf="show">Email<button type="button" class="button" (click)="toggleSort('email')"><i class="fa fa-arrow-down"></i></button></th>
-      <th [ngClass]="'responsive test'" *ngIf="hide">Phone<button type="button" class="button" (click)="toggleSort('phone')"><i
+      <th [ngClass]="{'test':  !show, 'test2': show}">Name<button type="button" class="button" title="Sort" (click)="toggleSort('name')"><i
             class="fa fa-arrow-down"></i></button></th>
-      <th [ngClass]="'responsive test'" *ngIf="hide">Availability<button type="button" class="button" (click)="toggleSort('time')"><i
+      <th [ngClass]="{'test':  !show, 'test2': show}">Email<button type="button" class="button" title="Sort" (click)="toggleSort('email')"><i
+            class="fa fa-arrow-down"></i></button></th>
+      <th [ngClass]="{'test':  show, 'test2': !show}">Phone<button type="button" class="button" title="Sort" (click)="toggleSort('phone')"><i
+            class="fa fa-arrow-down"></i></button></th>
+      <th [ngClass]="{'test':  show, 'test2': !show}">Availability<button type="button" class="button" title="Sort" (click)="toggleSort('time')"><i
             class="fa fa-arrow-down"></i></button></th>
     </tr>
     <!-- FilterArrayByProperty:'first_name': componentInput | -->
     <tr>
-      <th *ngIf="show">
-        <input type="text" [(ngModel)]="a" placeholder="First name" (keyup)="toggleFilter('first_name')">
-        <input type="text" [(ngModel)]="b" placeholder="Last name" (keyup)="toggleFilter('last_name')">
+      <th [ngClass]="{'test':  !show, 'test2': show}">
+        <input class="search" type="text" [(ngModel)]="a" placeholder="First name" title="Search" (keyup)="toggleFilter('first_name')">
+        <input class="search" type="text" [(ngModel)]="b" placeholder="Last name" title="Search" (keyup)="toggleFilter('last_name')">
       </th>
-      <th *ngIf="show">
-        <input type="text" [(ngModel)]="c" placeholder="Email" (keyup)="toggleFilter('email')">
+      <th [ngClass]="{'test':  !show, 'test2': show}">
+        <input class="search" type="text" [(ngModel)]="c" placeholder="Email" title="Search" (keyup)="toggleFilter('email')">
       </th>
-      <th [ngClass]="'responsive test'" *ngIf="hide">
-        <input type="text" [(ngModel)]="d" placeholder="Phone" (keyup)="toggleFilter('phone')">
+      <th [ngClass]="{'test':  show, 'test2': !show}">
+        <input class="search" type="text" [(ngModel)]="d" placeholder="Phone" title="Search" (keyup)="toggleFilter('phone')">
       </th>
-      <th [ngClass]="'responsive test'" *ngIf="hide">
-        <input type="text" [(ngModel)]="e" placeholder="Availability" (keyup)="toggleFilter('time')">
+      <th [ngClass]="{'test':  show, 'test2': !show}">
+        <input class="search" type="text" [(ngModel)]="e" placeholder="Availability" title="Search" (keyup)="toggleFilter('time')">
       </th>
     </tr>
     <tr class="booking" *ngFor="let booking of bookingsList | FilterArrayByProperty:filterBy: componentInput | sort:sortBy">
-      <td *ngIf="show">{{ booking.first_name }} {{booking.last_name}}</td>
-      <td *ngIf="show">{{booking.email}}</td>
-      <td [ngClass]="'responsive test'" *ngIf="hide">{{booking.phone}}
+      <td [ngClass]="{'test':  !show, 'test2': show}">{{ booking.first_name }} {{booking.last_name}}</td>
+      <td [ngClass]="{'test':  !show, 'test2': show}">{{booking.email}}</td>
+      <td [ngClass]="{'test':  show, 'test2': !show}">{{booking.phone}}
       </td>
-      <td [ngClass]="'responsive test'" *ngIf="hide">{{booking.time}}</td>
+      <td [ngClass]="{'test':  show, 'test2': !show}">{{booking.time}}</td>
     </tr>
   </table>
 </div>

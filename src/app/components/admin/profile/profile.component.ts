@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import Api from "../../../connection-services/api-connection/api-routes";
 import { Company } from "../../shared/companies/company";
 
 @Component({
@@ -9,47 +9,44 @@ import { Company } from "../../shared/companies/company";
   templateUrl: "./profile.component.html",
   styleUrls: ["./profile.component.css"]
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent<T> implements OnInit {
   public company: Company = new Company();
-  public img_url = false;
+  public img_url = true;
+  public starsCount = 3;
 
   constructor(
-    private dataService: ApiConnectionService,
-    private router: Router,
-    private http: HttpClient
+    private _company: ApiConnectionService<Company>,
+    private router: Router
   ) {}
 
   onLogOut() {
     localStorage.removeItem("email");
     localStorage.removeItem("token");
-    localStorage.removeItem("success_message");
+    localStorage.removeItem("auth");
     localStorage.removeItem("id");
     this.router.navigate(["/companies"]);
-    // window.location.reload();
   }
-  // tslint:disable-next-line:use-life-cycle-interface
+
   ngAfterViewInit() {
     this.getCompanyProfile();
   }
-  getCompanyProfile(): void {
-    this.dataService.getProfile().subscribe((res: any) => {
-      console.log("res ", res.company);
-      this.company = res.company;
-      if (res.company.image_url) {
-        this.img_url = true;
-      }
-    });
+
+  getCompanyProfile() {
+    this._company.get(`${Api.base}${Api.profile}`).subscribe(
+      (res: any) => {
+        this.company = res.company;
+        console.log("res ", res.company);
+      },
+      err => console.log("Err ", err)
+    );
   }
 
-  updateCompanyProfile(): void {
-    console.log("this.company ", this.company);
-    this.dataService.updateProfile(this.company).subscribe(
+  updateCompanyProfile() {
+    this._company.put(`${Api.base}${Api.profile}`, this.company).subscribe(
       (res: any) => {
-        console.log("res", res);
+        console.log("res ", res.company);
       },
-      err => {
-        console.log("Err: ", err);
-      }
+      err => console.log("Err ", err)
     );
     this.getCompanyProfile();
   }

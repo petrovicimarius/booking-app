@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, Output } from "@angular/core";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import { Router, Route, RoutesRecognized } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-page-header",
@@ -10,7 +9,7 @@ import { Router, Route, RoutesRecognized } from "@angular/router";
 export class PageHeaderComponent implements OnInit {
   public currentRoute;
 
-  constructor(router: Router, private dataService: ApiConnectionService) {
+  constructor(router: Router) {
     router.events.subscribe((url: any) => console.log(url));
     this.currentRoute = router.url;
 

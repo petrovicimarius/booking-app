@@ -2,17 +2,30 @@
 </app-page-header-admin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="profile">
-  <form (ngSubmit)="updateCompanyProfile()" #profile="ngForm">
-    <div class="editProfile">
-      <div>
-        <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+  <div class="editProfile">
+    <div>
+      <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+      <div class="rating">
+        <rating [ngModel]="starsCount" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
+        </rating>
       </div>
+    </div>
+    <form (ngSubmit)="updateCompanyProfile()" #profile="ngForm">
       <div class="editInfo">
         <div class="companyName">
           <p>Company name</p>
           <input type="text" class="name" id="name" name="newName" [(ngModel)]="company.name" required #newName="ngModel">
           <div class="error_message">
             <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid name format!
+            </i>
+          </div>
+        </div>
+        <div class="companyEmail">
+          <p>Company email</p>
+          <input type="text" class="name" id="name" name="email" [(ngModel)]="company.email" required pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+            #email="ngModel">
+          <div class="error_message">
+            <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
             </i>
           </div>
         </div>
@@ -52,13 +65,14 @@
         </div>
         <div class="buttons">
           <div class="divSignOut">
-            <button type="button" class="signOut" (click)="onLogOut()">sign out</button>
+            <button type="button" class="signOut" title="Log out on this company" (click)="onLogOut()">sign out</button>
           </div>
           <div class="divSave">
-            <button type="submit" class="save" [disabled]="!profile.valid">save</button>
+            <button type="submit" class="save" title="Save changes" [disabled]="!profile.valid">save</button>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
 </div>

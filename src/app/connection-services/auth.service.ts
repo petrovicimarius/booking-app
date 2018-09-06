@@ -2,14 +2,15 @@ import { Router } from "@angular/router";
 import { Injectable, OnInit } from "@angular/core";
 @Injectable()
 export class AuthService implements OnInit {
-  public token = localStorage.getItem("token").toString();
-  public success_message = localStorage.getItem("success_message").toString();
+  public auth = localStorage.getItem("auth")
+    ? localStorage.getItem("auth").toString()
+    : "false";
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
   isAuthenticated() {
-    if (this.token != "" && this.success_message === "true") {
+    if (this.auth === "true") {
       return true;
     } else {
       return false;
