@@ -9,7 +9,7 @@ import Api from "../../../connection-services/api-connection/api-routes";
   styleUrls: ["./offices.component.css"]
   // host: { "(document:click)": "handleClick($event)" }
 })
-export class OfficesComponent<T> implements OnInit {
+export class OfficesComponent implements OnInit {
   [x: string]: any;
   public officesList: Office[] = [];
   public officeData: Office = new Office();
@@ -17,6 +17,7 @@ export class OfficesComponent<T> implements OnInit {
   public editEnabled = false;
   public createVisible = false;
   public createEnabled = false;
+  public deleteEnabled = false;
 
   constructor(
     private _office: ApiConnectionService<Office>,
@@ -120,9 +121,12 @@ export class OfficesComponent<T> implements OnInit {
   toggleUndo(): void {
     this.editEnabled = false;
     this.createEnabled = false;
+    this.deleteEnabled = false;
     this.getOffices();
   }
-
+  toggleDelete() {
+    this.deleteEnabled = true;
+  }
   toggleCreate(): void {
     console.log("response", this.officeData);
     this.officeData = new Office();

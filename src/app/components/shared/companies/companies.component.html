@@ -1,28 +1,29 @@
 <app-page-header>
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="companiesList">
-  <div class="rectangle">
-    <div class="company" *ngFor="let company of companiesList">
-      <div class="logo">
-        <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
-        <div class="rating">
-          <rating [ngModel]="starsCount" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
-          </rating>
+<div class="background">
+  <div class="companiesList">
+    <div class="rectangle">
+      <div class="company" *ngFor="let company of companiesList">
+        <div class="logo">
+          <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
+          <div class="rating">
+            <rating [ngModel]="starsCount" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
+            </rating>
+          </div>
         </div>
-      </div>
-      <div class="companyInfo">
-        <div class="companyName">
-          <p>{{company.name}}</p>
-        </div>
-        <div class="companyDesc">
-          <p>{{company.description}}</p>
-        </div>
-        <div class="select">
-          <button type="button" class="selectCompany" title="Select this company" (click)="goToOffices(company)">SELECT</button>
+        <div class="companyInfo">
+          <div class="companyName">
+            <p>{{company.name}}</p>
+          </div>
+          <div class="companyDesc">
+            <p>{{company.description}}</p>
+          </div>
+          <div class="select">
+            <button type="button" class="selectCompany" title="Select this company" (click)="goToOffices(company)">SELECT</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>

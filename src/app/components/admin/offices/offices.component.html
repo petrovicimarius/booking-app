@@ -1,7 +1,7 @@
 <app-page-header-admin>
 </app-page-header-admin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="officeList">
+<div class="officeList background">
   <div class="createOffice">
     <button class="create">
       <i class="fa fa-plus-circle" title="Add new office" (click)="toggleAdd()"></i>
@@ -19,8 +19,22 @@
           <i class="fa fa-edit" style="font-size:30px;" title="Edit this office" (click)="toggleEdit(office)"></i>
         </button>
         <button class="delete">
-          <i class="fa fa-trash-o" style="font-size:30px;" title="Delete this office" (click)="deleteOffice(office)"></i>
+          <i class="fa fa-trash-o" style="font-size:30px;" title="Delete this office" (click)="toggleDelete()"></i>
         </button>
+      </div>
+      <div class="delete-modal" *ngIf="deleteEnabled">
+        <div class="on-delete">
+          <div style="float:right;">
+            <button type="button" class="close" (click)="toggleUndo()">x</button>
+          </div>
+          <p>You`re sure you want to delete it?</p>
+          <div class="approve">
+            <div class="approve-div">
+              <button class="approve-yes" (click)="deleteOffice(office)">Yes</button>
+              <button class="approve-no" (click)="toggleUndo()">No</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="officeDesc">
         <p>{{office.description}}</p>
@@ -63,16 +77,19 @@
             <p>Office name</p>
             <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required #newName="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid name
+              <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
+                name
                 format!
               </i>
             </div>
           </div>
           <div class="createNewDesc">
             <p>Office description</p>
-            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description" required #textarea="ngModel"></textarea>
+            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
+              required #textarea="ngModel"></textarea>
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid description
+              <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid
+                description
                 format!
               </i>
             </div>
@@ -83,7 +100,8 @@
             <p>Address</p>
             <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required #address="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid adress
+              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
+                adress
                 format!
               </i>
             </div>
@@ -92,7 +110,8 @@
             <p>Email</p>
             <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required #email="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
+                format!
               </i>
             </div>
           </div>
@@ -100,7 +119,8 @@
             <p>Phone</p>
             <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required #phone="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
+                format!
               </i>
             </div>
           </div>
@@ -130,16 +150,19 @@
             <p>Office name</p>
             <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required #newName="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid name
+              <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
+                name
                 format!
               </i>
             </div>
           </div>
           <div class="createNewDesc">
             <p>Office description</p>
-            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description" required #textarea="ngModel"></textarea>
+            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
+              required #textarea="ngModel"></textarea>
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid description
+              <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid
+                description
                 format!
               </i>
             </div>
@@ -150,7 +173,8 @@
             <p>Address</p>
             <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required #address="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid adress
+              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
+                adress
                 format!
               </i>
             </div>
@@ -159,7 +183,8 @@
             <p>Email</p>
             <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required #email="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
+                format!
               </i>
             </div>
           </div>
@@ -167,7 +192,8 @@
             <p>Phone</p>
             <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required #phone="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
+                format!
               </i>
             </div>
           </div>

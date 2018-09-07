@@ -16,6 +16,7 @@ export class ServicesComponent implements OnInit {
   public editEnabled = false;
   public createVisible = false;
   public createEnabled = false;
+  public deleteEnabled = false;
 
   constructor(
     private _services: ApiConnectionService<Service>,
@@ -62,6 +63,7 @@ export class ServicesComponent implements OnInit {
         },
         err => console.log("Err ", err)
       );
+    this.deleteEnabled = false;
   }
 
   update() {
@@ -108,10 +110,13 @@ export class ServicesComponent implements OnInit {
     this.serviceData = new Service();
     this.createEnabled = true;
   }
-
+  toggleDelete() {
+    this.deleteEnabled = true;
+  }
   toggleUndo(): void {
     this.editEnabled = false;
     this.createEnabled = false;
+    this.deleteEnabled = false;
     this.getServices();
   }
 

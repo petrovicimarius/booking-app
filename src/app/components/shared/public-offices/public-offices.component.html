@@ -1,7 +1,7 @@
 <app-page-header>
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="padding-top: 150px;">
+<div class="background" style="padding-top: 150px;">
   <div class="company">
     <div class="logo">
       <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
@@ -12,6 +12,20 @@
       </div>
       <div class="companyDesc">
         <p>{{company.description}}</p>
+      </div>
+      <div style="display:flex;">
+        <a href="http://www.facebook.com" class="social-media">
+          <img class="social" src="./assets/facebook.jpg">
+        </a>
+        <a href="http://www.instagram.com" class="social-media">
+          <img class="social" src="./assets/instagram.png">
+        </a>
+        <a href="http://www.linkedin.com" class="social-media">
+          <img class="social" src="./assets/linkedin.png">
+        </a>
+        <a href="http://plus.google.com" class="social-media">
+          <img class="social" src="./assets/google.png">
+        </a>
       </div>
     </div>
   </div>
@@ -36,12 +50,13 @@
           <span>{{office.phone}}</span>
           <p>Phone</p>
         </div>
+        <div class="map">
+          <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
       </div>
-      <div class="map">
-        <agm-map [latitude]="lat" [longitude]="lng">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        </agm-map>
-      </div>
+
       <div>
         <button type="button" class="selectOffice" title="Select this office" (click)="goToServices(office)">SELECT</button>
       </div>

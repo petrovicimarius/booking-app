@@ -1,3 +1,21 @@
+.background {
+  position: relative;
+  padding-bottom: 50px;
+}
+.background::before {
+  background-image: url(../../../../assets/1.jpg);
+  background-repeat: no-repeat;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: 2000px 1000px;
+  background-attachment: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  content: "";
+  position: absolute;
+}
 .office {
   max-width: 700px;
   margin: 0 auto;
@@ -9,12 +27,17 @@
   text-align: center;
   margin-bottom: 40px;
 }
+.office:hover {
+  transition: box-shadow 0.8s;
+  box-shadow: 0 0 11px #d966ff;
+}
 .officeList {
   padding-left: 20px;
   padding-right: 20px;
 }
 .officeInfo {
   display: flex;
+  flex-wrap: wrap;
 }
 .officeInfo p {
   color: grey;
@@ -42,6 +65,7 @@
   margin-top: 30px;
 }
 .selectOffice:hover {
+  transition: background 0.8s;
   background: #ffccff;
 }
 .company {
@@ -83,13 +107,43 @@
 agm-map {
   height: 200px;
 }
+.address:hover,
+.address:focus {
+  transition: color 0.8s;
+  color: #ffccff;
+}
+.address:hover ~ .map {
+  transition-duration: 1s;
+  opacity: 1;
+  display: block;
+}
 .map {
+  transition-duration: 1s;
+  transition: opacity 0.8s;
+  display: none;
   width: 80%;
   margin: 0 auto;
   border: 1px solid #ffccff;
+  opacity: 0;
 }
 .map:hover {
   opacity: 0.7;
+  display: block;
+}
+.social-media {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-right: 10px;
+}
+.social {
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+}
+.social:hover {
+  transition: opacity 0.8s;
+  opacity: 1;
 }
 @media only screen and (max-width: 700px) {
   .company {

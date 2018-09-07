@@ -1,23 +1,36 @@
-html {
-  background: #f2f2f2;
-  -webkit-background-size: 100% 100% cover;
-  -moz-background-size: 100% 100% cover;
-  -o-background-size: 100% 100% cover;
-  background-size: 100% 100% cover;
-  margin: 0;
-  padding: 0;
+.background {
+  position: relative;
+  padding-bottom: 50px;
+}
+.background::before {
+  background-image: url(../../../../assets/building.png);
+  background-repeat: no-repeat;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
+  background-size: 2000px 1000px;
+  background-attachment: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  content: "";
+  position: absolute;
 }
 .service {
   max-width: 700px;
   margin: 0 auto;
   border-radius: 5px;
-  background-color: #f0f0f5;
+  background-color: white;
   outline: none;
   border: 2px solid #ffe6ff;
   padding-bottom: 20px;
   text-align: center;
+  opacity: 1;
+}
+.service:hover {
+  transition: box-shadow 0.8s;
+  box-shadow: 0 0 11px #d966ff;
+  opacity: 0.7;
 }
 .companyOffice {
   padding-left: 25px;
@@ -39,6 +52,8 @@ html {
 }
 .selectOffice:hover,
 .selectOffice:focus {
+  box-shadow: 0 0 11px #d966ff;
+  transition: box-shadow 0.8s;
   border: 1px solid #ff99ff;
 }
 .office {
@@ -61,6 +76,7 @@ html {
 }
 .edit:hover,
 .delete:hover {
+  transition: color 0.8s;
   color: lightgray;
 }
 .delete {
@@ -89,10 +105,9 @@ html {
 .serviceList {
   padding-top: 150px;
   opacity: 1;
-  background-color: white;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 1;
 }
 .createService {
   margin: 0 auto;
@@ -115,10 +130,12 @@ html {
 }
 .createButton i,
 .deleteButton i {
+  transition: color 0.8s;
   color: #d966ff;
 }
 .createButton i:hover,
 .deleteButton i:hover {
+  transition: color 0.8s;
   color: #ffccff;
 }
 .modal {
@@ -134,11 +151,23 @@ html {
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 }
+.delete-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(190, 190, 190, 0.4);
+  padding-top: 100px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
 .create i {
   font-size: 90px;
   color: #d966ff;
 }
 .create i:hover {
+  transition: color 0.8s;
   color: #ffccff;
 }
 .serviceEdit {
@@ -154,6 +183,62 @@ html {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+.on-delete {
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 200px;
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+  border: 2px solid #ffe6ff;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.on-delete p {
+  font-size: 30px;
+  color: #d966ff;
+  padding-bottom: 50px;
+}
+.approve {
+  display: flex;
+  margin: 0 auto;
+}
+.approve-div {
+  display: flex;
+  margin: 0 auto;
+}
+.approve-yes,
+.approve-no {
+  width: 100px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  color: white;
+  background: #d966ff;
+}
+.approve-yes:hover,
+.approve-no:hover {
+  transition: background 0.8s;
+  background: #ffccff;
+}
+.close {
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: grey;
+  outline: none;
+}
+.close:hover {
+  transition: color 0.8s;
+  color: black;
 }
 .name,
 .newName {
@@ -177,6 +262,8 @@ html {
 }
 .newName:hover,
 .newName:focus {
+  box-shadow: 0 0 11px #d966ff;
+  transition: box-shadow 0.8s;
   border: 1px solid #ff99ff;
 }
 .serviceName {
@@ -231,6 +318,8 @@ html {
 }
 .createTextarea:hover,
 .createTextarea:focus {
+  box-shadow: 0 0 11px #d966ff;
+  transition: box-shadow 0.8s;
   border: 1px solid #ff99ff;
 }
 .serviceDesc {
@@ -263,6 +352,7 @@ html {
   color: red;
 }
 .createButton:disabled i {
+  transition: color 0.8s;
   color: grey;
 }
 .responsive {
