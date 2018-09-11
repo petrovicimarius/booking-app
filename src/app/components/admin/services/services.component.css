@@ -1,6 +1,7 @@
 .background {
   position: relative;
   padding-bottom: 50px;
+  min-height: 937px;
 }
 .background::before {
   background-image: url(../../../../assets/building.png);

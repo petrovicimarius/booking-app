@@ -12,6 +12,8 @@
   margin-bottom: 50px;
 }
 .banner:hover {
+  transition: box-shadow 0.8s;
+  box-shadow: 0 0 11px #d966ff;
   border-radius: 10px;
   border: 1px solid #d966ff;
 }
@@ -74,6 +76,7 @@
 }
 .sign-btn:hover,
 .sign-up:hover {
+  transition: background 0.8s;
   background: #ffccff;
 }
 .sign-btn:disabled {
@@ -142,6 +145,8 @@
 .password:hover,
 .email:focus,
 .password:focus {
+  transition: box-shadow 0.8s;
+  box-shadow: 0 0 11px #d966ff;
   border: 1px solid #ffccff;
 }
 .password {
@@ -182,6 +187,7 @@
   margin-top: 20px;
 }
 .forgot a:hover {
+  transition: color 0.8s;
   color: #ffccff;
 }
 .to-sign-up {

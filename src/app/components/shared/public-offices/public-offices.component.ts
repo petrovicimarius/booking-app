@@ -5,6 +5,7 @@ import { ApiConnectionService } from "../../../connection-services/api-connectio
 import { Service } from "../../admin/services/service";
 import { Company } from "../companies/company";
 import Api from "../../../connection-services/api-connection/api-routes";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-public-offices",
@@ -17,13 +18,15 @@ export class PublicOfficesComponent implements OnInit {
   public servicesList: Service[] = [];
   public company: Company = new Company();
   public img_url = false;
-  lat: number = 47.6407786;
-  lng: number = 26.2593758;
+  public lat;
+  public lng;
+  public newAddress;
 
   constructor(
     private _company: ApiConnectionService<Company>,
     private _office: ApiConnectionService<Office>,
     private _service: ApiConnectionService<Service>,
+    private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -37,6 +40,21 @@ export class PublicOfficesComponent implements OnInit {
   ngAfterViewInit() {
     this.getOffices();
     this.getCompany();
+  }
+
+  convertAddress(address) {
+    this.newAddress = address;
+    this.newAddress = this.newAddress.replace(/ /g, "+");
+    this.http
+      .get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${
+          this.newAddress
+        }&key=AIzaSyAqcFHBPQuY6E-Fd5mn9DKlks8tHhHHewM`
+      )
+      .subscribe((res: any) => {
+        this.lat = res.results[0].geometry.location.lat;
+        this.lng = res.results[0].geometry.location.lng;
+      });
   }
 
   getCompany(): void {

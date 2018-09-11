@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { Booking } from "../../admin/bookings/booking";
 import { formatDate } from "@angular/common";
 import Api from "../../../connection-services/api-connection/api-routes";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-public-services",
@@ -37,6 +38,7 @@ export class PublicServicesComponent implements OnInit {
     private _service: ApiConnectionService<Service>,
     private _office: ApiConnectionService<Office>,
     private _booking: ApiConnectionService<Booking>,
+    private http: HttpClient,
     private route: ActivatedRoute
   ) {}
 
@@ -86,6 +88,12 @@ export class PublicServicesComponent implements OnInit {
     this.sendBooking();
   }
 
+  getRating() {
+    if (this.starsCount) {
+      console.log("rate", this.starsCount);
+    }
+  }
+
   toggleBook(item): void {
     this.booking = new Booking();
     this.service = item;
@@ -99,6 +107,7 @@ export class PublicServicesComponent implements OnInit {
   toggleUndo(): void {
     this.bookEnabled = false;
     this.sendEnabled = false;
+    this.getRating();
   }
   toggleRating() {
     this.bookEnabled = false;

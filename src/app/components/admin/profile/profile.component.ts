@@ -11,7 +11,7 @@ import { Company } from "../../shared/companies/company";
 })
 export class ProfileComponent<T> implements OnInit {
   public company: Company = new Company();
-  public img_url = true;
+  public img_url = false;
   public starsCount = 3;
 
   constructor(
@@ -36,6 +36,9 @@ export class ProfileComponent<T> implements OnInit {
       (res: any) => {
         this.company = res.company;
         console.log("res ", res.company);
+        if (res.company.image_url) {
+          this.img_url = true;
+        }
       },
       err => console.log("Err ", err)
     );

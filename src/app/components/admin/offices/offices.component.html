@@ -75,7 +75,8 @@
         <div class="firstDiv">
           <div class="createNewName">
             <p>Office name</p>
-            <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required #newName="ngModel">
+            <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required pattern="[a-zA-Z0-9- ]{1,30}"
+              #newName="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
                 name
@@ -85,8 +86,8 @@
           </div>
           <div class="createNewDesc">
             <p>Office description</p>
-            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
-              required #textarea="ngModel"></textarea>
+            <textarea rows="9" maxlength="300" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
+              required pattern=".{10,}" #textarea="ngModel"></textarea>
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid
                 description
@@ -98,7 +99,8 @@
         <div class="secondDiv">
           <div class="createNewName">
             <p>Address</p>
-            <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required #address="ngModel">
+            <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required pattern="[a-zA-Z0-9,.;: ]{5,100}"
+              #address="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
                 adress
@@ -108,7 +110,8 @@
           </div>
           <div class="createNewName">
             <p>Email</p>
-            <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required #email="ngModel">
+            <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              #email="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
                 format!
@@ -117,7 +120,8 @@
           </div>
           <div class="createNewName">
             <p>Phone</p>
-            <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required #phone="ngModel">
+            <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required pattern="[0-9.+ ]{10,20}"
+              #phone="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
                 format!
@@ -148,7 +152,8 @@
         <div class="firstDiv">
           <div class="createNewName">
             <p>Office name</p>
-            <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required #newName="ngModel">
+            <input type="text" class="newName" name="newName" [(ngModel)]="officeData.name" required pattern="[a-zA-Z0-9- ]{1,30}"
+              #newName="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
                 name
@@ -158,8 +163,8 @@
           </div>
           <div class="createNewDesc">
             <p>Office description</p>
-            <textarea rows="9" maxlength="100" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
-              required #textarea="ngModel"></textarea>
+            <textarea rows="9" maxlength="300" class="createTextarea" name="textarea" [(ngModel)]="officeData.description"
+              required pattern=".{10,}" #textarea="ngModel"></textarea>
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid
                 description
@@ -171,7 +176,8 @@
         <div class="secondDiv">
           <div class="createNewName">
             <p>Address</p>
-            <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required #address="ngModel">
+            <input type="text" class="newName" name="address" [(ngModel)]="officeData.address" required pattern="[a-zA-Z0-9,.;: ]{5,100}"
+              #address="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
                 adress
@@ -181,7 +187,8 @@
           </div>
           <div class="createNewName">
             <p>Email</p>
-            <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required #email="ngModel">
+            <input type="text" class="newName" name="email" [(ngModel)]="officeData.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              #email="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
                 format!
@@ -190,7 +197,8 @@
           </div>
           <div class="createNewName">
             <p>Phone</p>
-            <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required #phone="ngModel">
+            <input type="text" class="newName" name="phone" [(ngModel)]="officeData.phone" required pattern="[0-9.+ ]{10,20}"
+              #phone="ngModel">
             <div class="error_message">
               <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
                 format!

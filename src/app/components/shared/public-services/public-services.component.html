@@ -69,18 +69,22 @@
         <div class="firstDiv">
           <div class="inputDesign">
             <p>First name</p>
-            <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required #first_name="ngModel">
+            <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required pattern="[a-zA-Z]{2,15}"
+              #first_name="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a valid
+              <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a
+                valid
                 first name format!
               </i>
             </div>
           </div>
           <div class="inputDesign">
             <p>Last name</p>
-            <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required #last_name="ngModel">
+            <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required pattern="[a-zA-Z]{2,15}"
+              #last_name="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a valid
+              <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a
+                valid
                 last name format!
               </i>
             </div>
@@ -90,17 +94,21 @@
         <div class="secondDiv">
           <div class="inputDesign">
             <p>Phone</p>
-            <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required #phone="ngModel">
+            <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required pattern="[0-9.+ ]{10,20}"
+              #phone="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
+                format!
               </i>
             </div>
           </div>
           <div class="inputDesign">
             <p>Email</p>
-            <input type="text" class="email" name="email" [(ngModel)]="booking.email" required #email="ngModel">
+            <input type="text" class="email" name="email" [(ngModel)]="booking.email" required pattern="[a-zA-Z0-9._-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+              #email="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email format!
+              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
+                format!
               </i>
             </div>
           </div>
@@ -108,9 +116,11 @@
         <div class="thirdDiv">
           <div class="inputDesign">
             <p>Address</p>
-            <input type="text" class="address" name="address" [(ngModel)]="booking.address" required #address="ngModel">
+            <input type="text" class="address" name="address" [(ngModel)]="booking.address" required pattern="[a-zA-Z0-9,.;: ]{5,30}"
+              #address="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid address
+              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
+                address
                 format!
               </i>
             </div>
@@ -142,13 +152,14 @@
         <p>Your request was sent!</p>
       </div>
       <div class="confirmation">
-        <p>In a couple of seconds a confirmation email will be sent to your email address with all the details for your reservation.
+        <p>In a couple of seconds a confirmation email will be sent to your email address with all the details for your
+          reservation.
           Thank you for using our services!</p>
       </div>
       <div class="rating">
         <p>RATE US</p>
-        <rating [(ngModel)]="starsCount" (click)="count()" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="false"
-          [disabled]="false" [required]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
+        <rating [(ngModel)]="starsCount" (click)="count()" [max]="5" class="fa-star" fullIcon="★" emptyIcon="☆"
+          [readonly]="false" [disabled]="false" [required]="true" [float]="true" [titles]="['one', 'two', 'three', 'four', 'five']">
         </rating>
       </div>
       <div class="buttonSize">

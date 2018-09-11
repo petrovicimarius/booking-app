@@ -22,6 +22,7 @@ import { AuthService } from "./connection-services/auth.service";
 import { ApiConnectionService } from "./connection-services/api-connection/api-connection.service";
 import { RatingModule } from "ngx-rating";
 import { AgmCoreModule } from "@agm/core";
+import { CoordinatesModule } from "angular-coordinates";
 
 const routes: Routes = [
   { path: "services", component: ServicesComponent, canActivate: [AuthGuard] },
@@ -58,6 +59,7 @@ const routes: Routes = [
     HttpModule,
     HttpClientModule,
     RatingModule,
+    CoordinatesModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyAqcFHBPQuY6E-Fd5mn9DKlks8tHhHHewM"
     }),

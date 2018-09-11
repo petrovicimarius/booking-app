@@ -1,14 +1,15 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import { Component, OnInit, Injectable } from "@angular/core";
 import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
 import { Office } from "../offices/office";
 import Api from "../../../connection-services/api-connection/api-routes";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-offices",
   templateUrl: "./offices.component.html",
   styleUrls: ["./offices.component.css"]
-  // host: { "(document:click)": "handleClick($event)" }
 })
+@Injectable()
 export class OfficesComponent implements OnInit {
   [x: string]: any;
   public officesList: Office[] = [];
@@ -18,13 +19,10 @@ export class OfficesComponent implements OnInit {
   public createVisible = false;
   public createEnabled = false;
   public deleteEnabled = false;
-
   constructor(
     private _office: ApiConnectionService<Office>,
-    private _element: ElementRef
-  ) {
-    this.elementRef = _element;
-  }
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {}
 
@@ -72,6 +70,7 @@ export class OfficesComponent implements OnInit {
       },
       err => console.log("Err ", err)
     );
+    this.deleteEnabled = false;
   }
 
   updateOffice(item): void {

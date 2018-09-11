@@ -79,7 +79,8 @@
           <div class="firstDiv">
             <div class="createNewName">
               <p>Service name</p>
-              <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required #newName="ngModel">
+              <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required pattern="[a-zA-Z0-9- ]{1,30}"
+                #newName="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
                   name
@@ -89,8 +90,8 @@
             </div>
             <div class="createNewDesc">
               <p>Service description</p>
-              <textarea rows="9" maxlength="100" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description"
-                required #textarea="ngModel"></textarea>
+              <textarea rows="9" maxlength="300" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description"
+                required pattern=".{10,}" #textarea="ngModel"></textarea>
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a
                   valid
@@ -103,7 +104,8 @@
           <div class="secondDiv">
             <div class="createNewName">
               <p>Spaces</p>
-              <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required #spaces="ngModel">
+              <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required pattern="[0-9]{1,5}"
+                #spaces="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! spaces.valid && spaces.touched"> Please enter a valid
                   spaces
@@ -113,7 +115,8 @@
             </div>
             <div class="createNewName">
               <p>Duration(hour)</p>
-              <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required #duration="ngModel">
+              <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required pattern="[0-9,:; ]{1,5}"
+                #duration="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! duration.valid && duration.touched"> Please enter a
                   valid
@@ -124,7 +127,8 @@
             </div>
             <div class="createNewName">
               <p>Price(LEI)</p>
-              <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required #price="ngModel">
+              <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required pattern="[0-9]{1,10}"
+                #price="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! price.valid && price.touched"> Please enter a valid
                   price
@@ -167,7 +171,8 @@
           <div class="firstDiv">
             <div class="createNewName">
               <p>Service name</p>
-              <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required #newName="ngModel">
+              <input type="text" class="newName" name="newName" [(ngModel)]="serviceData.name" required pattern="[a-zA-Z0-9- ]{1,30}"
+                #newName="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid
                   name
@@ -177,8 +182,8 @@
             </div>
             <div class="createNewDesc">
               <p>Service description</p>
-              <textarea rows="9" maxlength="100" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description"
-                required #textarea="ngModel"></textarea>
+              <textarea rows="9" maxlength="300" name="textarea" class="createTextarea" [(ngModel)]="serviceData.description"
+                required pattern=".{10,}" #textarea="ngModel"></textarea>
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a
                   valid
@@ -191,7 +196,8 @@
           <div class="secondDiv">
             <div class="createNewName">
               <p>Spaces</p>
-              <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required #spaces="ngModel">
+              <input type="text" class="newName" name="spaces" [(ngModel)]="serviceData.spaces" required pattern="[0-9]{1,5}"
+                #spaces="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! spaces.valid && spaces.touched"> Please enter a valid
                   spaces
@@ -201,7 +207,8 @@
             </div>
             <div class="createNewName">
               <p>Duration(hour)</p>
-              <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required #duration="ngModel">
+              <input type="text" class="newName" name="duration" [(ngModel)]="serviceData.duration" required pattern="[0-9,:; ]{1,5}"
+                #duration="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! duration.valid && duration.touched"> Please enter a
                   valid
@@ -212,7 +219,8 @@
             </div>
             <div class="createNewName">
               <p>Price(LEI)</p>
-              <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required #price="ngModel">
+              <input type="text" class="newName" name="price" [(ngModel)]="serviceData.price" required pattern="[0-9]{1,10}"
+                #price="ngModel">
               <div class="error_message">
                 <i class="fa fa-exclamation-triangle" *ngIf="! price.valid && price.touched"> Please enter a valid
                   price

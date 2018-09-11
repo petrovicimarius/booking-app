@@ -12,18 +12,19 @@
               password_message }}</i></span>
           <p class="inputInfo">Email adress</p>
           <div>
-            <input type="email" name="email_log" id="email_log" class="email" [(ngModel)]="company.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-              #email="ngModel">
+            <input type="email" name="email_log" id="email_log" class="email" [(ngModel)]="company.email" required
+              email pattern="[a-zA-Z0-9._+-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel">
 
           </div>
           <div class="error_email">
-            <span class="error_message fa fa-exclamation-triangle" *ngIf="!email.valid && email.touched "> Please enter a
+            <span class="error_message fa fa-exclamation-triangle" *ngIf="!email.valid && email.touched "> Please enter
+              a
               valid email format!</span>
           </div>
           <p class="inputInfo">Password</p>
           <div class="display_eye">
-            <input type="{{showHide ? 'password' : 'text'}}" name="password_log" id="password_log" class="password" [(ngModel)]="company.password"
-              required pattern=".{4,}" #passwordlogin="ngModel">
+            <input type="{{showHide ? 'password' : 'text'}}" name="password_log" id="password_log" class="password"
+              [(ngModel)]="company.password" required pattern=".{4,}" #passwordlogin="ngModel">
 
             <button type="button" (mousedown)="showMyPass()" class="showPassword">
               <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
@@ -64,8 +65,9 @@
           <div class="col-md-7">
             <p class="inputInfo">Email adress</p>
             <div>
-              <input type="email" name="email_reset" id="email_reset" class="email" [(ngModel)]="company.email" required email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-                #email_reset="ngModel" style="margin-bottom: 5px;">
+              <input type="email" name="email_reset" id="email_reset" class="email" [(ngModel)]="company.email"
+                required email pattern="[a-zA-Z0-9._+-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email_reset="ngModel"
+                style="margin-bottom: 5px;">
             </div>
             <div class="error_email">
               <span class="error_message  fa fa-exclamation-triangle" *ngIf="!email_reset.valid && email_reset.touched ">Please
@@ -102,8 +104,8 @@
             <span class="help-block" style="color: black"> {{message}}</span>
             <p class="inputInfo">Your name</p>
             <div>
-              <input type="text" name="first_name" id="first_name" class="email" [(ngModel)]="company.name" required #first_name="ngModel"
-                pattern="[a-zA-Z ]*">
+              <input type="text" name="first_name" id="first_name" class="email" [(ngModel)]="company.name" required
+                #first_name="ngModel" pattern="[a-zA-Z ]*">
             </div>
             <div class="error_email">
               <span class="error_message  fa fa-exclamation-triangle" *ngIf="!first_name.valid && first_name.touched ">Your
@@ -111,8 +113,8 @@
             </div>
             <p class="inputInfo">Email adress</p>
             <div>
-              <input type="email" name="email_register" id="email_register" class="email" [(ngModel)]="company.email" required #email_register="ngModel"
-                email pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+              <input type="email" name="email_register" id="email_register" class="email" [(ngModel)]="company.email"
+                required #email_register="ngModel" email pattern="[a-zA-Z0-9._+-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
 
             </div>
             <div class="error_email">
@@ -121,8 +123,8 @@
             </div>
             <p class="inputInfo">Password</p>
             <div class="display_eye">
-              <input type="{{showHide ? 'password' : 'text'}}" name="password_register" id="password_register" class="password" [(ngModel)]="company.password"
-                required pattern=".{4,}" #password_register="ngModel">
+              <input type="{{showHide ? 'password' : 'text'}}" name="password_register" id="password_register" class="password"
+                [(ngModel)]="company.password" required pattern=".{4,}" #password_register="ngModel">
               <button type="button" (click)="showMyPass()" class="showPassword">
                 <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
               </button>

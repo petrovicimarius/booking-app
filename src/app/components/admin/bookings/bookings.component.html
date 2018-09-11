@@ -13,8 +13,8 @@
             class="fa fa-arrow-down"></i></button></th>
       <th [ngClass]="{'test':  show, 'test2': !show}">Phone<button type="button" class="button" title="Sort" (click)="toggleSort('phone')"><i
             class="fa fa-arrow-down"></i></button></th>
-      <th [ngClass]="{'test':  show, 'test2': !show}">Availability<button type="button" class="button" title="Sort" (click)="toggleSort('time')"><i
-            class="fa fa-arrow-down"></i></button></th>
+      <th [ngClass]="{'test':  show, 'test2': !show}">Availability<button type="button" class="button" title="Sort"
+          (click)="toggleSort('time')"><i class="fa fa-arrow-down"></i></button></th>
     </tr>
     <!-- FilterArrayByProperty:'first_name': componentInput | -->
     <tr>
@@ -32,7 +32,7 @@
         <input class="search" type="text" [(ngModel)]="e" placeholder="Availability" title="Search" (keyup)="toggleFilter('time')">
       </th>
     </tr>
-    <tr class="booking" *ngFor="let booking of bookingsList | FilterArrayByProperty:filterBy: componentInput | sort:sortBy">
+    <tr class="booking" *ngFor="let booking of bookingsList | FilterArrayByProperty:filterBy:componentInput | sort:sortBy">
       <td [ngClass]="{'test':  !show, 'test2': show}">{{ booking.first_name }} {{booking.last_name}}</td>
       <td [ngClass]="{'test':  !show, 'test2': show}">{{booking.email}}</td>
       <td [ngClass]="{'test':  show, 'test2': !show}">{{booking.phone}}

@@ -26,6 +26,9 @@
         <a href="http://plus.google.com" class="social-media">
           <img class="social" src="./assets/google.png">
         </a>
+        <a href="http://www.youtube.com" class="social-media">
+          <img class="social" src="./assets/youtube.png">
+        </a>
       </div>
     </div>
   </div>
@@ -38,7 +41,7 @@
         <p>{{office.description}}</p>
       </div>
       <div class="officeInfo">
-        <div class="address">
+        <div class="address" (mouseenter)="convertAddress(office.address)">
           <span>{{office.address}}</span>
           <p>Adress</p>
         </div>
