@@ -13,7 +13,6 @@ export class PageHeaderComponent implements OnInit {
     router.events.subscribe((url: any) => console.log(url));
     this.currentRoute = router.url;
 
-    console.log(this.currentRoute);
     if (this.currentRoute == "/dashboard") {
     }
   }

@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Office } from "../../admin/offices/office";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import { Service } from "../../admin/services/service";
-import { Company } from "../companies/company";
-import Api from "../../../connection-services/api-connection/api-routes";
+import {
+  ApiConnectionService,
+  Office,
+  Service,
+  Company
+} from "@app/api-connection";
+import Api from "@app/routes";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -33,7 +35,6 @@ export class PublicOfficesComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    console.log("res", this.id);
     localStorage.setItem("public_company_id", this.id);
   }
 
@@ -61,7 +62,6 @@ export class PublicOfficesComponent implements OnInit {
     this._company.get(`${Api.base}${Api.company}${"/"}${this.id}`).subscribe(
       (res: any) => {
         this.company = res.company;
-        console.log("res company", this.company);
         if (this.company.image_url) {
           this.img_url = true;
         }
@@ -74,7 +74,6 @@ export class PublicOfficesComponent implements OnInit {
     this._office.get(`${Api.base}${Api.offices}${this.id}`).subscribe(
       (res: any) => {
         this.officesList = res.offices;
-        console.log("res", this.officesList);
       },
       err => console.log("Err ", err)
     );
@@ -83,14 +82,12 @@ export class PublicOfficesComponent implements OnInit {
     this._service.get(`${Api.base}${Api.services}${item.id}`).subscribe(
       (res: any) => {
         this.servicesList = res.services;
-        console.log("res services", this.servicesList);
       },
       err => console.log("Err ", err)
     );
   }
 
   goToServices(item): void {
-    console.log("office id", item.id);
     this.getServices(item);
     this.router.navigate(["/services/", item.id]);
   }

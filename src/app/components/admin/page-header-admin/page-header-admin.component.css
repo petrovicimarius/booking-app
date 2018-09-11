@@ -18,6 +18,12 @@
   z-index: 1000;
   justify-content: space-between;
 }
+.fa-bars {
+  font-size: 30px;
+}
+.imgP {
+  margin-top: 40px;
+}
 #navbar .pages {
   list-style: none;
   display: inline-flex;
@@ -128,5 +134,6 @@
     margin: 0 auto;
     float: right;
     margin-right: 27px;
+    margin-top: 40px;
   }
 }

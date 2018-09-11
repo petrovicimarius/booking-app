@@ -22,11 +22,9 @@ li a {
   margin-right: -13px;
   cursor: pointer;
 }
-
 .navbar li :hover {
   color: #00217a;
 }
-
 .active {
   border-bottom: 2px solid #006fff;
   color: #00217a;
@@ -35,7 +33,12 @@ li a {
 .active a {
   font-weight: bold;
 }
-
+.fa-bars {
+  font-size: 30px;
+}
+.imgP {
+  margin-top: 40px;
+}
 #navbar {
   height: 90px;
   background-color: #8080ff;
@@ -254,6 +257,7 @@ li a {
     margin: 0 auto;
     float: right;
     margin-right: 27px;
+    margin-top: 40px;
   }
   .menuitems {
     width: 100%;

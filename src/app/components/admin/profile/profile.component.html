@@ -1,7 +1,7 @@
 <app-page-header-admin>
 </app-page-header-admin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="profile background">
+<div class="profile bkg-profile">
   <div class="editProfile">
     <div>
       <img class="img" src="{{img_url ? company.image_url : './assets/default.png'}}">
@@ -14,64 +14,83 @@
     <form (ngSubmit)="updateCompanyProfile()" #profile="ngForm">
       <div class="editInfo">
         <div class="companyName">
-          <p>Company name</p>
+          <div>
+            <label for="name">Company name</label>
+          </div>
           <input type="text" class="name" id="name" name="newName" [(ngModel)]="company.name" required pattern="[a-zA-Z0-9 ]{1,30}"
             #newName="ngModel">
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please enter a valid name
+            <label for="name" class="fa fa-exclamation-triangle" *ngIf="! newName.valid && newName.touched"> Please
+              enter a valid
+              name
               format!
-            </i>
+            </label>
           </div>
         </div>
         <div class="companyEmail">
-          <p>Company email</p>
-          <input type="text" class="name" id="name" name="email" [(ngModel)]="company.email" required pattern="[a-zA-Z0-9._+-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          <div>
+            <label for="email">Company email</label>
+          </div>
+          <input type="text" class="name" id="email" name="email" [(ngModel)]="company.email" required pattern="[a-zA-Z0-9._+-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
             #email="ngModel">
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
+            <label for="email" class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter
+              a valid email
               format!
-            </i>
+            </label>
           </div>
         </div>
         <div class="companyDescription">
-          <p>Company description</p>
+          <div>
+            <label for="description">Company description</label>
+          </div>
           <textarea rows="5" name="textarea" class="textarea" id="description" [(ngModel)]="company.description"
             required pattern=".{10,500}" #textarea="ngModel"></textarea>
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched"> Please enter a valid
+            <label for="description" class="fa fa-exclamation-triangle" *ngIf="! textarea.valid && textarea.touched">
+              Please enter a valid
               description
               format!
-            </i>
+            </label>
           </div>
         </div>
-        <div>
-          <p>URL Image</p>
+        <div class="companyURL">
+          <div>
+            <label for="image_url">URL Image</label>
+          </div>
           <input type="url" class="name" id="image_url" name="url" title="Include http://" [(ngModel)]="company.image_url"
             required pattern="https?://.+" #url="ngModel">
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! url.valid && url.touched"> Please enter a valid URL format!
-            </i>
+            <label for="image_url" class="fa fa-exclamation-triangle" *ngIf="! url.valid && url.touched"> Please enter
+              a valid URL format!
+            </label>
           </div>
         </div>
-        <div>
-          <p>Address</p>
+        <div class="companyAddress">
+          <div>
+            <label for="address">Address</label>
+          </div>
           <input type="text" class="name" id="address" name="address" [(ngModel)]="company.address" required pattern="[a-zA-Z0-9,.;: ]{5,30}"
             #address="ngModel">
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
+            <label for="address" class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please
+              enter a valid
               address
               format!
-            </i>
+            </label>
           </div>
         </div>
-        <div>
-          <p>Phone</p>
+        <div class="companyPhone">
+          <div>
+            <label for="phone">Phone</label>
+          </div>
           <input type="text" class="name" id="phone" name="phone" [(ngModel)]="company.phone" required pattern="[0-9.+ ]{10,20}"
             #phone="ngModel">
           <div class="error_message">
-            <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
+            <label for="phone" class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter
+              a valid phone
               format!
-            </i>
+            </label>
           </div>
         </div>
         <div class="buttons">

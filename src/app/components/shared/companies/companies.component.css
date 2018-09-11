@@ -1,9 +1,9 @@
-.background {
+.bkg-comapny {
   position: relative;
   padding-bottom: 50px;
   min-height: 937px;
 }
-.background::before {
+.bkg-company::before {
   background-image: url(../../../../assets/1.jpg);
   background-repeat: no-repeat;
   top: 0;
@@ -37,6 +37,7 @@
   border: 1px solid lightgrey;
 }
 .company {
+  transition: 0.8s;
   max-width: 750px;
   margin: 0 auto;
   padding-bottom: 20px;
@@ -54,6 +55,7 @@
   opacity: 0.7;
 }
 .selectCompany {
+  transition: 0.8s;
   width: 50%;
   height: 40px;
   border-radius: 5px;

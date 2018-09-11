@@ -1,9 +1,9 @@
-.background {
+.bkg-services {
   position: relative;
   padding-bottom: 50px;
   min-height: 937px;
 }
-.background::before {
+.bkg-services::before {
   background-image: url(../../../../assets/building.png);
   background-repeat: no-repeat;
   top: 0;
@@ -18,6 +18,7 @@
   position: absolute;
 }
 .service {
+  transition: 0.8s;
   max-width: 700px;
   margin: 0 auto;
   border-radius: 5px;
@@ -42,6 +43,7 @@
   margin: 0;
 }
 .selectOffice {
+  transition: 0.8s;
   border-radius: 5px;
   outline: none;
   font-size: 17px;
@@ -68,11 +70,18 @@
   font-size: 20px;
   display: flex;
 }
-.edit {
+.fa-plus-circle {
+  transition: 0.8s;
+}
+.edit,
+.delete {
+  transition: 0.8s;
   background-color: transparent;
   outline: none;
   border: none;
   height: 20px;
+}
+.edit {
   margin-top: 15px;
 }
 .edit:hover,
@@ -81,10 +90,6 @@
   color: lightgray;
 }
 .delete {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  height: 20px;
   margin-top: 13px;
   margin-right: 15px;
 }
@@ -139,7 +144,8 @@
   transition: color 0.8s;
   color: #ffccff;
 }
-.modal {
+.modal,
+.delete-modal {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -148,17 +154,6 @@
   height: 100%;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 100px;
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
-}
-.delete-modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(190, 190, 190, 0.4);
   padding-top: 100px;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
@@ -198,22 +193,21 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  text-align: center;
 }
 .on-delete p {
   font-size: 30px;
   color: #d966ff;
   padding-bottom: 50px;
 }
-.approve {
-  display: flex;
-  margin: 0 auto;
-}
+.approve,
 .approve-div {
   display: flex;
   margin: 0 auto;
 }
 .approve-yes,
 .approve-no {
+  transition: 0.8s;
   width: 100px;
   height: 40px;
   margin-left: 20px;
@@ -231,6 +225,7 @@
   background: #ffccff;
 }
 .close {
+  transition: 0.8s;
   font-size: 15px;
   border: none;
   background: transparent;
@@ -259,6 +254,7 @@
   color: #d966ff;
 }
 .newName {
+  transition: 0.8s;
   width: 89%;
 }
 .newName:hover,
@@ -298,21 +294,20 @@
   color: #d966ff;
   padding-left: 10px;
 }
-.textarea {
+.textarea,
+.createTextarea {
+  transition: 0.8s;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
   font-size: 15px;
   color: #595959;
+}
+.textarea {
   margin-left: 25px;
   margin-top: 25px;
 }
 .createTextarea {
-  border-radius: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 15px;
-  color: #595959;
   margin-top: 10px;
   width: 91%;
   outline: none;
@@ -336,8 +331,8 @@
   margin-bottom: 50px;
   margin-top: 30px;
 }
-.firstDiv,
-.secondDiv {
+.element-up,
+.element-down {
   width: 50%;
   margin-left: 25px;
 }
@@ -348,6 +343,7 @@
   font-size: 20px;
 }
 .error_message {
+  transition: 0.8s;
   width: 97%;
   text-align: center;
   color: red;
@@ -356,7 +352,7 @@
   transition: color 0.8s;
   color: grey;
 }
-.responsive {
+.element-res {
   display: flex;
 }
 .icons {

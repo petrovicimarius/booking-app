@@ -1,9 +1,9 @@
-.background {
+.bkg-public {
   position: relative;
   padding-bottom: 50px;
   min-height: 787px;
 }
-.background::before {
+.bkg-public::before {
   background-image: url(../../../../assets/1.jpg);
   background-repeat: no-repeat;
   top: 0;
@@ -18,6 +18,7 @@
   position: absolute;
 }
 .service {
+  transition: 0.8s;
   max-width: 700px;
   margin: 0 auto;
   margin-top: 50px;
@@ -54,6 +55,7 @@
   font-size: 25px;
 }
 .bookNow {
+  transition: 0.8s;
   width: 40%;
   min-height: 40px;
   border-radius: 5px;
@@ -115,6 +117,7 @@
   padding-top: 50px;
 }
 .close {
+  transition: 0.8s;
   font-size: 15px;
   border: none;
   background: transparent;
@@ -138,15 +141,16 @@
 .formular p {
   font-size: 20px;
 }
-.firstDiv,
-.secondDiv,
-.thirdDiv {
+.element-up,
+.element-down,
+.element-mid {
   display: flex;
 }
 .name,
 .phone,
 .email,
 .address {
+  transition: 0.8s;
   width: 97%;
   height: 50px;
   border-radius: 5px;
@@ -155,8 +159,10 @@
   border: 1px solid black;
   outline: none;
   font-size: 20px;
+  margin-top: 10px;
 }
 .next {
+  transition: 0.8s;
   width: 100%;
   height: 50px;
   border-radius: 5px;
@@ -241,6 +247,7 @@ input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 .error_message {
+  transition: 0.8s;
   width: 97%;
   text-align: center;
   color: red;
@@ -250,16 +257,22 @@ input.ng-invalid.ng-touched {
   background: grey;
 }
 .date {
+  transition: 0.8s;
   border-radius: 5px;
   min-height: 50px;
   width: 100%;
   font-size: 20px;
   outline: none;
   border: 1px solid black;
+  margin-top: 10px;
 }
 .inputDesign {
   width: 97%;
   padding-left: 30px;
+  padding-bottom: 20px;
+}
+.inputDesign label {
+  font-size: 20px;
 }
 .rating {
   margin: 0 auto;
@@ -303,9 +316,9 @@ input.ng-invalid.ng-touched {
     display: block;
     text-align: center;
   }
-  .firstDiv,
-  .secondDiv,
-  .thirdDiv {
+  .element-up,
+  .element-mid,
+  .element-down {
     display: block;
   }
   .booking {

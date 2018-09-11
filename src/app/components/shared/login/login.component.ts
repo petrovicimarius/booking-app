@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, Output } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Company } from "../companies/company";
-import Api from "../../../connection-services/api-connection/api-routes";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
+import Api from "@app/routes";
+import { ApiConnectionService, Company } from "@app/api-connection";
 import { Router } from "@angular/router";
 
 @Component({
@@ -57,7 +56,6 @@ export class LoginComponent implements OnInit {
 
     this._company.post(`${Api.base}${Api.register}`, this.company).subscribe(
       (res: any) => {
-        console.log("res", res);
         this.manageForms(true, false, false);
       },
       err => {
@@ -68,7 +66,6 @@ export class LoginComponent implements OnInit {
 
   getCompanyProfile(): void {
     this._company.get(`${Api.base}${Api.profile}`).subscribe((res: any) => {
-      console.log("res ", res.company._id);
       localStorage.setItem("id", res.company._id);
     });
   }
@@ -78,12 +75,10 @@ export class LoginComponent implements OnInit {
 
     this._company.post(`${Api.base}${Api.login}`, this.company).subscribe(
       (res: any) => {
-        console.log("res ", res);
         const token = res.token.toString();
         const auth = res.auth.toString();
         localStorage.setItem("token", token);
         localStorage.setItem("auth", auth);
-        console.log("auth", auth);
 
         this._company.token = token;
         this._company.httpOptions = {
@@ -91,24 +86,18 @@ export class LoginComponent implements OnInit {
             "x-access-token": token || ""
           }
         };
-
-        console.log("token", token);
-
         if (auth === "false") {
           this.router.navigate(["/login"]);
         } else {
           localStorage.setItem("token", token);
           localStorage.setItem("email", this.company.email.toString());
-          // localStorage.setItem("success_message", this.success_message);
           this.getCompanyProfile();
-          console.log("true");
           this.router.navigate(["/offices"]);
           this.password_message = "";
         }
       },
       err => {
         console.log(err);
-        console.log("success_message", this.success_message);
         this.password_message = "Your email or password is invalid, try again!";
       }
     );

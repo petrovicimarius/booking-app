@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
+import { ApiConnectionService, Company } from "@app/api-connection";
 import { Router } from "@angular/router";
-import Api from "../../../connection-services/api-connection/api-routes";
-import { Company } from "../../shared/companies/company";
+import Api from "@app/routes";
 
 @Component({
   selector: "app-profile",
@@ -35,7 +34,6 @@ export class ProfileComponent<T> implements OnInit {
     this._company.get(`${Api.base}${Api.profile}`).subscribe(
       (res: any) => {
         this.company = res.company;
-        console.log("res ", res.company);
         if (res.company.image_url) {
           this.img_url = true;
         }
@@ -45,12 +43,9 @@ export class ProfileComponent<T> implements OnInit {
   }
 
   updateCompanyProfile() {
-    this._company.put(`${Api.base}${Api.profile}`, this.company).subscribe(
-      (res: any) => {
-        console.log("res ", res.company);
-      },
-      err => console.log("Err ", err)
-    );
+    this._company
+      .put(`${Api.base}${Api.profile}`, this.company)
+      .subscribe((res: any) => {}, err => console.log("Err ", err));
     this.getCompanyProfile();
   }
 

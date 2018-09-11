@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Booking } from "../../../components/admin/bookings/booking";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import Api from "../../../connection-services/api-connection/api-routes";
+import { ApiConnectionService, Booking } from "@app/api-connection";
+import Api from "@app/routes";
 
 @Component({
   selector: "app-bookings",

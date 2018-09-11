@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import { Company } from "./company";
-import { Office } from "../../admin/offices/office";
+import { ApiConnectionService, Company, Office } from "@app/api-connection";
 import { Router } from "@angular/router";
-import Api from "../../../connection-services/api-connection/api-routes";
+import Api from "@app/routes";
 
 @Component({
   selector: "app-companies",
@@ -34,7 +32,6 @@ export class CompaniesComponent<T> implements OnInit {
   getCompanies(): void {
     this._company.get(`${Api.base}${Api.company}`).subscribe((res: any) => {
       this.companiesList = res.companies;
-      console.log("res companies", this.companiesList);
     });
   }
 
@@ -43,16 +40,14 @@ export class CompaniesComponent<T> implements OnInit {
       .get(`${Api.base}${Api.offices}${item.id}`)
       .subscribe((res: any) => {
         this.officesList = res.offices;
-        console.log("res offices", res.offices);
       });
   }
 
   goToOffices(item): void {
-    console.log("company id", item.id);
     this.getOff(item);
     this.router.navigate(["/offices/", item.id]);
   }
   count() {
-    console.log(this.starsCount, "stars");
+    // console.log(this.starsCount, "stars");
   }
 }

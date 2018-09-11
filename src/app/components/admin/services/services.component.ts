@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Service } from "../../admin/services/service";
-import { Office } from "../offices/office";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
-import Api from "../../../connection-services/api-connection/api-routes";
+import { ApiConnectionService, Service, Office } from "@app/api-connection";
+import Api from "@app/routes";
 
 @Component({
   selector: "app-services",
@@ -34,7 +32,6 @@ export class ServicesComponent implements OnInit {
     this._services.get(`${Api.base}${Api.service}`).subscribe(
       (res: any) => {
         this.serviceList = res.services;
-        console.log("res ser", res.services);
       },
       err => console.log("Err ", err)
     );
@@ -44,21 +41,17 @@ export class ServicesComponent implements OnInit {
     this._offices.get(`${Api.base}${Api.office}`).subscribe(
       (res: any) => {
         this.officesList = res.offices;
-        console.log("res off", res);
       },
       err => console.log("Err ", err)
     );
   }
 
   deleteService(item) {
-    console.log("serviceData", item);
     this._services
       .delete(`${Api.base}${Api.service}${"/"}${item._id}`)
       .subscribe(
         (res: any) => {
-          console.log(res);
           this.serviceList.splice(item, 1);
-          console.log(this.serviceList);
           this.getServices();
         },
         err => console.log("Err ", err)
@@ -67,7 +60,6 @@ export class ServicesComponent implements OnInit {
   }
 
   update() {
-    console.log("serviceData", this.serviceData);
     this._services
       .put(
         `${Api.base}${Api.service}${"/"}${this.serviceData._id}`,
@@ -75,7 +67,6 @@ export class ServicesComponent implements OnInit {
       )
       .subscribe(
         (res: any) => {
-          console.log("res ", res);
           this.getServices();
         },
         err => console.log("Err ", err)
@@ -98,7 +89,6 @@ export class ServicesComponent implements OnInit {
       .post(`${Api.base}${Api.service}`, this.serviceData)
       .subscribe(
         (res: any) => {
-          console.log("res ", res);
           this.getServices();
         },
         err => console.log("Err ", err)

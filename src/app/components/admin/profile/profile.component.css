@@ -1,8 +1,8 @@
-.background {
+.bkg-profile {
   position: relative;
   padding-bottom: 50px;
 }
-.background::before {
+.bkg-profile::before {
   background-image: url(../../../../assets/building.png);
   background-repeat: no-repeat;
   top: 0;
@@ -42,12 +42,20 @@
   margin-top: 75px;
   margin-left: 55px;
 }
-.editInfo p {
+.companyName,
+.companyEmail,
+.companyDescription,
+.companyURL,
+.companyAddress,
+.companyPhone {
+  margin-top: 20px;
+}
+.editInfo label {
   font-size: 23px;
   color: #595959;
-  margin-bottom: 5px;
 }
 .name {
+  transition: 0.8s;
   border-radius: 5px;
   border: 1px solid #595959;
   background-color: white;
@@ -57,6 +65,8 @@
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  margin-top: 10px;
+  outline: none;
 }
 .name:hover,
 .name:focus {
@@ -65,12 +75,15 @@
   border: 1px solid #ff99ff;
 }
 .textarea {
+  transition: 0.8s;
   width: 340px;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
   font-size: 15px;
   color: #595959;
+  outline: none;
+  margin-top: 10px;
 }
 .textarea:hover,
 .textarea:focus {
@@ -79,41 +92,40 @@
   border: 1px solid #ff99ff;
   border: 1px solid #ff99ff;
 }
-.signOut {
+.signOut,
+.save {
+  transition: 0.8s;
   height: 50px;
   width: 150px;
   border-radius: 5px;
-  background: lightgrey;
   font-size: 25px;
   color: white;
   border: none;
   margin-top: 20px;
+  outline: none;
+}
+.signOut {
   float: left;
+  background: lightgrey;
 }
 .signOut:hover {
   transition: background 0.8s;
   background: grey;
 }
 .save {
-  height: 50px;
-  width: 150px;
-  border-radius: 5px;
   background: #d966ff;
-  font-size: 25px;
-  color: white;
-  border: none;
-  outline: none;
-  margin-top: 20px;
   float: right;
 }
 .save:hover {
   transition: background 0.8s;
   background: #ff99ff;
 }
-.error_message {
-  width: 97%;
+.error_message label {
+  transition: 0.8s;
+  width: 100%;
   text-align: center;
   color: red;
+  font-size: 20px;
 }
 .save:disabled {
   transition: background 0.8s;

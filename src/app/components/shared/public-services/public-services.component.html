@@ -1,7 +1,7 @@
 <app-page-header>
 </app-page-header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="background" style="padding-top: 150px;">
+<div class="bkg-public" style="padding-top: 150px;">
   <div class="officeHead">
     <div class="office">
       <div class="officeName">
@@ -66,71 +66,90 @@
         <p>PERSONAL DETAILS</p>
       </div>
       <div class="formular">
-        <div class="firstDiv">
+        <div class="element-up">
           <div class="inputDesign">
-            <p>First name</p>
-            <input type="text" class="name" name="first_name" [(ngModel)]="booking.first_name" required pattern="[a-zA-Z]{2,15}"
-              #first_name="ngModel">
+            <div>
+              <label for="first_name">First name</label>
+            </div>
+            <input type="text" class="name" name="first_name" id="first_name" [(ngModel)]="booking.first_name" required
+              pattern="[a-zA-Z]{2,15}" #first_name="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched"> Please enter a
+              <label for="first_name" class="fa fa-exclamation-triangle" *ngIf="! first_name.valid && first_name.touched">
+                Please enter a
                 valid
                 first name format!
-              </i>
+              </label>
             </div>
           </div>
           <div class="inputDesign">
-            <p>Last name</p>
-            <input type="text" class="name" name="last_name" [(ngModel)]="booking.last_name" required pattern="[a-zA-Z]{2,15}"
-              #last_name="ngModel">
+            <div>
+              <label for="last_name">Last name</label>
+            </div>
+            <input type="text" class="name" name="last_name" id="last_name" [(ngModel)]="booking.last_name" required
+              pattern="[a-zA-Z]{2,15}" #last_name="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched"> Please enter a
+              <label for="last_name" class="fa fa-exclamation-triangle" *ngIf="! last_name.valid && last_name.touched">
+                Please enter a
                 valid
                 last name format!
-              </i>
+              </label>
             </div>
           </div>
 
         </div>
-        <div class="secondDiv">
+        <div class="element-mid">
           <div class="inputDesign">
-            <p>Phone</p>
-            <input type="text" class="phone" name="phone" [(ngModel)]="booking.phone" required pattern="[0-9.+ ]{10,20}"
+            <div>
+              <label for="phone">Phone</label>
+            </div>
+            <input type="text" class="phone" name="phone" id="phone" [(ngModel)]="booking.phone" required pattern="[0-9.+ ]{10,20}"
               #phone="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please enter a valid phone
+              <label for="phone" class="fa fa-exclamation-triangle" *ngIf="! phone.valid && phone.touched"> Please
+                enter a valid phone
                 format!
-              </i>
+              </label>
             </div>
           </div>
           <div class="inputDesign">
-            <p>Email</p>
-            <input type="text" class="email" name="email" [(ngModel)]="booking.email" required pattern="[a-zA-Z0-9._-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+            <div>
+              <label for="email">Email</label>
+            </div>
+            <input type="text" class="email" name="email" id="email" [(ngModel)]="booking.email" required pattern="[a-zA-Z0-9._-]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
               #email="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please enter a valid email
+              <label for="email" class="fa fa-exclamation-triangle" *ngIf="! email.valid && email.touched"> Please
+                enter a valid email
                 format!
-              </i>
+              </label>
             </div>
           </div>
         </div>
-        <div class="thirdDiv">
+        <div class="element-down">
           <div class="inputDesign">
-            <p>Address</p>
-            <input type="text" class="address" name="address" [(ngModel)]="booking.address" required pattern="[a-zA-Z0-9,.;: ]{5,30}"
-              #address="ngModel">
+            <div>
+              <label for="address">Address</label>
+            </div>
+            <input type="text" class="address" id="address" name="address" [(ngModel)]="booking.address" required
+              pattern="[a-zA-Z0-9,.;: ]{5,30}" #address="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched"> Please enter a valid
+              <label for="address" class="fa fa-exclamation-triangle" *ngIf="! address.valid && address.touched">
+                Please enter a valid
                 address
                 format!
-              </i>
+              </label>
             </div>
           </div>
           <div class="inputDesign">
-            <p>Date</p>
-            <input class="date" type="date" name="date" [min]="today" [(ngModel)]="booking.time" required #date="ngModel">
+            <div>
+              <label for="date">Date</label>
+            </div>
+            <input class="date" type="date" id="date" name="date" [min]="today" [(ngModel)]="booking.time" required
+              #date="ngModel">
             <div class="error_message">
-              <i class="fa fa-exclamation-triangle" *ngIf="! date.valid && date.touched"> Please choose the date!
-              </i>
+              <label for="date" class="fa fa-exclamation-triangle" *ngIf="! date.valid && date.touched"> Please choose
+                the date!
+              </label>
             </div>
           </div>
         </div>

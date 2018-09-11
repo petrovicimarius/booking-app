@@ -1,16 +1,15 @@
-// tslint:disable-next-line:quotemark
-import { Component, OnInit } from "@angular/core";
-import { Service } from "../../admin/services/service";
-import { ApiConnectionService } from "../../../connection-services/api-connection/api-connection.service";
+import { Component, OnInit, NgModule } from "@angular/core";
+import {
+  ApiConnectionService,
+  Service,
+  Office,
+  Booking
+} from "@app/api-connection";
 import { ActivatedRoute } from "@angular/router";
-import { Office } from "../../admin/offices/office";
 import { FlatpickrModule } from "angularx-flatpickr";
-import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { Booking } from "../../admin/bookings/booking";
 import { formatDate } from "@angular/common";
-import Api from "../../../connection-services/api-connection/api-routes";
-import { HttpClient } from "@angular/common/http";
+import Api from "@app/routes";
 
 @Component({
   selector: "app-public-services",
@@ -38,15 +37,12 @@ export class PublicServicesComponent implements OnInit {
     private _service: ApiConnectionService<Service>,
     private _office: ApiConnectionService<Office>,
     private _booking: ApiConnectionService<Booking>,
-    private http: HttpClient,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    console.log("res", this.id);
     this.today = formatDate(this.now, "yyyy-MM-dd", "en-US", "+0530");
-    console.log("today", this.today);
   }
 
   ngAfterViewInit() {
@@ -58,7 +54,6 @@ export class PublicServicesComponent implements OnInit {
     this._office.get(`${Api.base}${Api.office}${"/"}${this.id}`).subscribe(
       (res: any) => {
         this.office = res.office;
-        console.log("res office", this.office);
       },
       err => console.log("Err ", err)
     );
@@ -68,7 +63,6 @@ export class PublicServicesComponent implements OnInit {
     this._service.get(`${Api.base}${Api.services}${this.id}`).subscribe(
       (res: any) => {
         this.servicesList = res.services;
-        console.log("res services", this.servicesList);
       },
       err => console.log("Err ", err)
     );
@@ -78,20 +72,15 @@ export class PublicServicesComponent implements OnInit {
     this.booking.office = this.id;
     this.booking.service = this.service_id;
     this.booking.company = localStorage.getItem("public_company_id");
-    console.log("booking", this.booking);
-    this._booking.post(`${Api.base}${Api.booking}`, this.booking).subscribe(
-      (res: any) => {
-        console.log("res booking", res);
-      },
-      err => console.log("Err ", err)
-    );
+    this._booking
+      .post(`${Api.base}${Api.booking}`, this.booking)
+      .subscribe((res: any) => {}, err => console.log("Err ", err));
     this.sendBooking();
   }
 
   getRating() {
-    if (this.starsCount) {
-      console.log("rate", this.starsCount);
-    }
+    // if (this.starsCount) {
+    // }
   }
 
   toggleBook(item): void {
@@ -118,6 +107,6 @@ export class PublicServicesComponent implements OnInit {
     this.sendEnabled = true;
   }
   count() {
-    console.log(this.starsCount, "stars");
+    // console.log(this.starsCount, "stars");
   }
 }

@@ -63,6 +63,7 @@ body {
   font-size: 20px;
 }
 .button {
+  transition: 0.8s;
   border: none;
   background: transparent;
   outline: none;
@@ -79,6 +80,7 @@ input {
   padding-right: 10px;
 }
 .filterBy {
+  transition: 0.8s;
   display: none;
   border-radius: 5px;
   outline: none;
@@ -96,6 +98,7 @@ input {
   background: #ffccff;
 }
 .search {
+  transition: 0.8s;
   border-radius: 5px;
   outline: none;
   border: 1px solid grey;
